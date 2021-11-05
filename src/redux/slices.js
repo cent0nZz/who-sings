@@ -5,18 +5,18 @@ export const currentUserSlice = createSlice({
   initialState: {
     isLogged: false,
     name: '',
-    games: []
+    playedGames: []
   },
   reducers: {
     logIn: (state, action) => {
       state.isLogged = true
       state.name = action.payload.name
-      state.games = action.payload.games
+      state.playedGames = action.payload.playedGames
     },
     logOut: (state) => {
       state.isLogged = false
       state.name = ''
-      state.games = []
+      state.playedGames = []
     },
   },
 })
