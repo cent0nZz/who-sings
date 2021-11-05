@@ -1,4 +1,4 @@
-function UserStatsPlayedGame(props) {
+function PlayedGameRecap(props) {
   return (
     <div>
       <div>#{props.id}</div>
@@ -8,4 +8,4 @@ function UserStatsPlayedGame(props) {
   )
 }
 
-export default UserStatsPlayedGame
+export default PlayedGameRecap

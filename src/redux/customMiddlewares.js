@@ -7,6 +7,7 @@ export const persistanceMiddleware = () => (next) => (action) => {
     if (!user) {
       user = {
         name: action.payload,
+        overralPoints: 0,
         playedGames: [],
       }
       addUser(user)
@@ -14,6 +15,7 @@ export const persistanceMiddleware = () => (next) => (action) => {
 
     action.payload = {
       name: user.name,
+      overralPoints: user.overralPoints,
       playedGames: user.playedGames,
     }
   }
