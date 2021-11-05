@@ -1,0 +1,8 @@
+https://api.musixmatch.com/ws/1.1/chart.tracks.get?chart_name=hot&page=100&page_size=1&country=it&f_has_lyrics=1&apikey=3fb07e540d2703665988993a99813fee
+
+https://api.musixmatch.com/ws/1.1/track.snippet.get?track_id=17105147&apikey=3fb07e540d2703665988993a99813fee
+
+https://api.musixmatch.com/ws/1.1/chart.artists.get?page=70&page_size=1&country=it&format=json&apikey=3fb07e540d2703665988993a99813fee
+
+max safe tracks page: 90
+max safe artists: 60
