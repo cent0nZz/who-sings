@@ -1,5 +1,5 @@
 import { addUser, getUserByName } from '../data/clientDatabase';
-import { logIn } from './slices'
+import { logIn } from './slices/currentUserSlice'
 
 export const persistanceMiddleware = () => (next) => (action) => {
   if (logIn.match(action)) {

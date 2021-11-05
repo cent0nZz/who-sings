@@ -5,7 +5,7 @@ import { getAllUsers } from '../../data/clientDatabase'
 
 function Leaderboard() {
   const users = getAllUsers().sort((a, b) => b.overralPoints - a.overralPoints)
-    .map((user, idx) => <UserStats rank={idx + 1} name={user.name} overralPoints={user.overralPoints} />)
+    .map((user, idx) => <UserStats rank={idx + 1} name={user.name} overralPoints={user.overralPoints} />) // TODO: (maybe) move this
 
   return (
     <div>

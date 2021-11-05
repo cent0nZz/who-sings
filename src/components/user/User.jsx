@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { logIn, logOut } from '../../redux/slices'
+import { logIn, logOut } from '../../redux/slices/currentUserSlice'
 import UserModal from '../user-modal/UserModal'
 
 function User() {
