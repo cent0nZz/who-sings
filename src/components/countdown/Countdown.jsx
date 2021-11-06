@@ -25,7 +25,7 @@ function Countdown(props) {
   }, [props, timeLeft])
 
   return (
-    <div>Time left: {timeLeft}"</div>
+    <div>{props.leftContent}{timeLeft}{props.rightContent}</div>
   )
 }
 

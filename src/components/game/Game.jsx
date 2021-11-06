@@ -71,7 +71,7 @@ function Game() {
             <div>
               Score: {currentGame.score}pt.
               <ProgressBar current={currentGameUIIndex} total={MAX} />
-              <Countdown active={currentQuestion} id={currentQuestion?.snippet} seconds={QUESTION_MAX_TIME_SECS} onFinish={goToNextQuestion} />
+              <Countdown active={currentQuestion} id={currentQuestion?.snippet} seconds={QUESTION_MAX_TIME_SECS} onFinish={goToNextQuestion} leftContent={'Time left: '} rightContent={'"'} />
             </div>
           </>
         )
