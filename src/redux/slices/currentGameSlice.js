@@ -3,23 +3,35 @@ import { getRandomTrack, getRandomArtist, getTrackSnippet } from '../../data/res
 
 export const GameStates = Object.freeze({ 'preGame': 1, 'inGame': 2, 'postGame': 3 }) // TODO: move this
 
+const getQuestion = async () => {
+  const randomSnippetPromise = new Promise(async (resolve) => {
+    const randomTrack = await getRandomTrack()
+    const randomTrackSnippet = await getTrackSnippet(randomTrack.track.id)
+    resolve({
+      snippet: randomTrackSnippet,
+      snippetArtist: randomTrack.artist,
+    })
+  })
+  const [randomSnippet, randomArtistOne, randomArtistTwo] =
+    await Promise.all([randomSnippetPromise, getRandomArtist(), getRandomArtist()])
+
+  return {
+    ...randomSnippet,
+    otherArtists: [randomArtistOne, randomArtistTwo],
+  }
+}
+
 export const loadNextQuestion = createAsyncThunk(
   'currentGame/loadNextQuestion',
-  async () => {
-    const randomSnippetPromise = new Promise(async (resolve) => {
-      const randomTrack = await getRandomTrack()
-      const randomTrackSnippet = await getTrackSnippet(randomTrack.track.id)
-      resolve({
-        snippet: randomTrackSnippet,
-        snippetArtist: randomTrack.artist,
-      })
-    })
-    const [randomSnippet, randomArtistOne, randomArtistTwo] =
-      await Promise.all([randomSnippetPromise, getRandomArtist(), getRandomArtist()])
+  async (_id, { getState }) => {
+    const currentGameQuestions = getState().currentGame.questions
 
-    return {
-      ...randomSnippet,
-      otherArtists: [randomArtistOne, randomArtistTwo],
+    while (true) {
+      const newQuestion = await getQuestion()
+
+      if (!currentGameQuestions.some(question => question.snippet === newQuestion.snippet)) {
+        return newQuestion
+      }
     }
   }
 )
