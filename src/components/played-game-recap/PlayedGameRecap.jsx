@@ -2,7 +2,7 @@ function PlayedGameRecap(props) {
   return (
     <div>
       <div>#{props.id}</div>
-      <div>{props.timestamp}</div>
+      <div>{new Date(props.timestamp).toLocaleString(navigator.language)}</div>
       <div>+{props.totalPoints}pt.</div>
     </div>
   )

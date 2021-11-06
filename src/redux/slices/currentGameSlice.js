@@ -43,14 +43,13 @@ export const currentGameSlice = createSlice({
       state.index = -1
       state.score = 0
     },
-    beginGame: (state) => {
+    beginGame: (state, action) => {
       state.gameState = GameStates.inGame
-      state.time = Date.now() // TODO: make reducer pure
+      state.time = action.payload
     },
-    endGame: (state) => {
+    endGame: (state, action) => {
       state.gameState = GameStates.postGame
-      state.time = Date.now() // TODO: make reducer pure
-      // TODO: intercept with middleware to save stats
+      state.time = Math.round((new Date(action.payload).getTime() - new Date(state.time).getTime()) / 1000)
     },
     updateProgress: (state, action) => {
       state.score += action.payload

@@ -33,7 +33,10 @@ export const addPlayedGame = (playedGame, userThatPlayed) => {
 
   const userIndex = users.findIndex(user => user.name === userThatPlayed.name)
   if (userIndex !== -1) {
-    users[userIndex].playedGames.push(playedGame)
+    users[userIndex].playedGames.push({
+      id: userIndex + 1,
+      ...playedGame
+    })
   } else {
     return
   }

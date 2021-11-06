@@ -23,7 +23,7 @@ function Game() {
   }, [dispatch])
  
   const handleBeginGame = () => {
-    dispatch(beginGame())
+    dispatch(beginGame(Date.now()))
     dispatch(loadNextQuestion())
   }
 
@@ -33,7 +33,7 @@ function Game() {
     if (currentGameUIIndex < MAX) {
       dispatch(loadNextQuestion())
     } else {
-      dispatch(endGame())
+      dispatch(endGame(Date.now()))
     }
   }
 
@@ -60,7 +60,7 @@ function Game() {
       break
     case GameStates.postGame:
       gameMarkup = (
-        <GameRecap points={currentGame.score} time={1} numCorrectChoises={currentGame.numCorrectChoises} totalChoises={MAX} />
+        <GameRecap points={currentGame.score} time={currentGame.time} numCorrectChoises={currentGame.numCorrectChoises} totalChoises={MAX} />
       )
       break
     default:
