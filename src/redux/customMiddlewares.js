@@ -8,7 +8,6 @@ export const currentUserMiddleware = ({ getState }) => (next) => (action) => {
     if (!user) {
       user = {
         name: action.payload,
-        overralPoints: 0,
         playedGames: [],
       }
       addUser(user)
@@ -16,7 +15,6 @@ export const currentUserMiddleware = ({ getState }) => (next) => (action) => {
 
     action.payload = {
       name: user.name,
-      overralPoints: user.overralPoints,
       playedGames: user.playedGames,
     }
   } else if (refresh.match(action)) {
