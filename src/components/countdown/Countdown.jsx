@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 function Countdown(props) {
-  const [timeLeft, setTimeLeft] = useState()
+  const [timeLeft, setTimeLeft] = useState(props.seconds)
 
   useEffect(() => {
     setTimeLeft(props.seconds)
@@ -25,7 +25,7 @@ function Countdown(props) {
   }, [props, timeLeft])
 
   return (
-    <div>{timeLeft}</div>
+    <div>Time left: {timeLeft}"</div>
   )
 }
 

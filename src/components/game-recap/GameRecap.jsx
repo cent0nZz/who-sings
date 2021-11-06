@@ -5,7 +5,7 @@ function GameRecap(props) {
       <div>
         <div>+{props.points}pt.</div>
         <div>Correct: {props.numCorrectChoises}/{props.totalChoises}</div>
-        <div>Time: {props.time}'</div>
+        <div>Time: {props.time}"</div>
       </div>
     </div>
   )
