@@ -28,13 +28,25 @@ export const deleteUser = (userToDelete) => {
   localStorage.setItem('who_sings/users', JSON.stringify(users))
 }
 
+export const getAllPlayedGames = (userThatPlayed) => {
+  const users = getAllUsers()
+
+  const userIndex = users.findIndex(user => user.name === userThatPlayed.name)
+  if (userIndex !== -1) {
+    return users[userIndex].playedGames
+  } else {
+    return null
+  }
+}
+
 export const addPlayedGame = (playedGame, userThatPlayed) => {
   const users = getAllUsers()
 
   const userIndex = users.findIndex(user => user.name === userThatPlayed.name)
   if (userIndex !== -1) {
-    users[userIndex].playedGames.push({
-      id: userIndex + 1,
+    const playedGames = users[userIndex].playedGames
+    playedGames.push({
+      id: playedGames.length + 1,
       ...playedGame
     })
   } else {

@@ -1,10 +1,10 @@
 import ProgressBar from '../progress-bar/ProgressBar'
 import Countdown from '../countdown/Countdown'
 import GameQuestion from '../game-question/GameQuestion'
-import { resetGame, beginGame, endGame, updateProgress, loadNextQuestion } from '../../redux/slices/currentGameSlice'
+import { refresh } from '../../redux/slices/currentUserSlice'
+import { resetGame, beginGame, endGame, updateProgress, loadNextQuestion, GameStates } from '../../redux/slices/currentGameSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react'
-import { GameStates } from '../../redux/slices/currentGameSlice'
 import '../../data/rest'
 import GameRecap from '../game-recap/GameRecap'
 
@@ -34,6 +34,7 @@ function Game() {
       dispatch(loadNextQuestion())
     } else {
       dispatch(endGame(Date.now()))
+      dispatch(refresh())
     }
   }
 

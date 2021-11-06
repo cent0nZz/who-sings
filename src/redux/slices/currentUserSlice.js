@@ -18,8 +18,11 @@ export const currentUserSlice = createSlice({
       state.name = ''
       state.playedGames = []
     },
+    refresh: (state, action) => {
+      state.playedGames = action.payload
+    },
   },
 })
 
-export const { logIn, logOut } = currentUserSlice.actions
+export const { logIn, logOut, refresh } = currentUserSlice.actions
 export default currentUserSlice.reducer
