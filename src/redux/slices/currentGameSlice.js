@@ -29,7 +29,10 @@ export const loadNextQuestion = createAsyncThunk(
     while (true) {
       const newQuestion = await getQuestion()
 
-      if (!currentGameQuestions.some(question => question.snippet === newQuestion.snippet)) {
+      /*if (!currentGameQuestions.some(question => question.snippet === newQuestion.snippet)) {
+        return newQuestion
+      }*/
+      if (true) {
         return newQuestion
       }
     }

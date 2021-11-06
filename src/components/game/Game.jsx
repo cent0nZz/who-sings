@@ -27,15 +27,18 @@ function Game() {
     dispatch(loadNextQuestion())
   }
 
-  const handleUserSelection = (choise) => {
-    dispatch(updateProgress(choise.correct ? CORRECT_CHOISE_POINTS : 0))
-
+  const goToNextQuestion = () => {
     if (currentGameUIIndex < MAX) {
       dispatch(loadNextQuestion())
     } else {
       dispatch(endGame(Date.now()))
       dispatch(refresh())
     }
+  }
+
+  const handleUserSelection = (choise) => {
+    dispatch(updateProgress(choise.correct ? CORRECT_CHOISE_POINTS : 0))
+    goToNextQuestion()
   }
 
   let gameMarkup
@@ -49,12 +52,15 @@ function Game() {
       )
       break
     case GameStates.inGame:
+      const currentQuestion = currentGame.questions[currentGame.index]
+
       gameMarkup = (
         <>
           <GameQuestion onChoiseClick={handleUserSelection} />
           <div>
+            Score: {currentGame.score}pt.
             <ProgressBar current={currentGameUIIndex} total={MAX} />
-            <Countdown />
+            <Countdown active={currentQuestion} id={currentQuestion?.snippet} seconds={5} onFinish={goToNextQuestion} />
           </div>
         </>
       )

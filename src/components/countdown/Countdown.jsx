@@ -1,10 +1,31 @@
+import { useEffect, useState } from 'react'
+
 function Countdown(props) {
-  // setTimeout(props.onExpire, props.amountMs)
+  const [timeLeft, setTimeLeft] = useState()
+
+  useEffect(() => {
+    setTimeLeft(props.seconds)
+  }, [props.id, props.seconds])
+
+  useEffect(() => {
+    if (!props.active) {
+      return
+    }
+    if (!timeLeft) {
+      props.onFinish()
+      setTimeLeft(props.seconds)
+      return
+    }
+
+    const intervalId = setInterval(() => {
+      setTimeLeft(timeLeft - 1)
+    }, 1000)
+
+    return () => clearInterval(intervalId)
+  }, [props, timeLeft])
 
   return (
-    <div>
-      countdown
-    </div>
+    <div>{timeLeft}</div>
   )
 }
 
