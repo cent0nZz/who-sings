@@ -5,15 +5,20 @@ export const GameStates = Object.freeze({ 'preGame': 1, 'inGame': 2, 'postGame':
 
 export const loadNextQuestion = createAsyncThunk(
   'currentGame/loadNextQuestion',
-  async () => { // TODO: promise.all
-    const randomTrack = await getRandomTrack()
-    const randomArtistOne = await getRandomArtist()
-    const randomArtistTwo = await getRandomArtist()
-    const randomTrackSnippet = await getTrackSnippet(randomTrack.track.id)
+  async () => {
+    const randomSnippetPromise = new Promise(async (resolve) => {
+      const randomTrack = await getRandomTrack()
+      const randomTrackSnippet = await getTrackSnippet(randomTrack.track.id)
+      resolve({
+        snippet: randomTrackSnippet,
+        snippetArtist: randomTrack.artist,
+      })
+    })
+    const [randomSnippet, randomArtistOne, randomArtistTwo] =
+      await Promise.all([randomSnippetPromise, getRandomArtist(), getRandomArtist()])
 
     return {
-      snippet: randomTrackSnippet,
-      snippetArtist: randomTrack.artist,
+      ...randomSnippet,
       otherArtists: [randomArtistOne, randomArtistTwo],
     }
   }

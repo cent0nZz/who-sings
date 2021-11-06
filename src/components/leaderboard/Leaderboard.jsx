@@ -9,7 +9,7 @@ function Leaderboard() {
 
   return (
     <div>
-      <Link to='/'>Back</Link>
+      <Link to='/'>Back to Dashboard</Link>
       {users.length > 0 ? <List items={users} /> : 'There isn\'t a played game yet. Be the first!'}
     </div>
   )

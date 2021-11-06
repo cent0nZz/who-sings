@@ -9,26 +9,28 @@ import '../../data/rest'
 import GameRecap from '../game-recap/GameRecap'
 
 const MAX = 10 // TODO: move/change this
+const CORRECT_CHOISE_POINTS = 50 // TODO: move/change this
 
 function Game() {
   const dispatch = useDispatch()
   const currentGame = useSelector((state) => state.currentGame)
+  const currentGameUIIndex = currentGame.index + 1
 
   useEffect(() => {
     return () => {
       dispatch(resetGame())
     }
-  }, [])
-
+  }, [dispatch])
+ 
   const handleBeginGame = () => {
     dispatch(beginGame())
     dispatch(loadNextQuestion())
   }
 
   const handleUserSelection = (choise) => {
-    dispatch(updateProgress(choise.correct ? 10 : 0))
+    dispatch(updateProgress(choise.correct ? CORRECT_CHOISE_POINTS : 0))
 
-    if (currentGame.index + 1 < MAX) {
+    if (currentGameUIIndex < MAX) {
       dispatch(loadNextQuestion())
     } else {
       dispatch(endGame())
@@ -50,7 +52,7 @@ function Game() {
         <>
           <GameQuestion onChoiseClick={handleUserSelection} />
           <div>
-            <ProgressBar current={currentGame.index + 1} total={MAX} />
+            <ProgressBar current={currentGameUIIndex} total={MAX} />
             <Countdown />
           </div>
         </>
