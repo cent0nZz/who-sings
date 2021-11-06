@@ -4,6 +4,7 @@ import GameQuestion from '../game-question/GameQuestion'
 import { beginGame, endGame, updateScore, loadQuestion } from '../../redux/slices/currentGameSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import { GameStates } from '../../redux/slices/currentGameSlice'
+import '../../data/rest'
 
 const MAX = 10 // TODO: move/change this
 
@@ -24,31 +25,38 @@ function Game() {
     }
   }
 
+  let dynamicContent
+
   switch (currentGame.gameState) {
     case GameStates.preGame:
-      return (
-        <div>
-          Ready to go?
-          <button onClick={() => dispatch(beginGame())}>Yeah!</button>
-        </div>
-      )
+      dynamicContent = (<>
+        Ready to go?
+        <button onClick={() => dispatch(beginGame())}>Yeah!</button>
+      </>)
+      break;
     case GameStates.inGame:
-      return (
-        <div>
+      dynamicContent = (
+        <>
           <GameQuestion onChoiseClick={handleUserSelection} />
           <div>
             <ProgressBar current={currentGame.index} total={MAX} />
             <Countdown />
           </div>
-        </div>
+        </>
       )
+      break;
     case GameStates.postGame:
-      return (
-        <div>PostGame</div>
+      dynamicContent = (
+        <>PostGame</>
       )
+      break;
     default:
-      return null
+      dynamicContent = null
   }
+
+  return (
+    <div>{dynamicContent}</div>
+  )
 }
 
 export default Game

@@ -15,17 +15,21 @@ export const currentGameSlice = createSlice({
     index: 0,
   },
   reducers: {
+    resetGame: (state) => {
+      state.gameState = GameStates.preGame
+      state.beginTimestamp = 0
+      state.question.snippet = ''
+      state.question.choises = []
+      state.score = 0
+      state.index = 0
+    },
     beginGame: (state) => {
       state.gameState = GameStates.inGame
       state.beginTimestamp = Date.now() // TODO: make reducer pure
     },
     endGame: (state) => {
       state.gameState = GameStates.postGame
-      state.beginTimestamp = 0
-      state.question.snippet = ''
-      state.question.choises = []
-      state.score = 0
-      state.index = 0
+      // TODO: intercept with middleware to save stats
     },
     updateScore: (state, action) => {
       state.score += action.payload
@@ -38,5 +42,5 @@ export const currentGameSlice = createSlice({
   },
 })
 
-export const { beginGame, endGame, updateScore, loadQuestion } = currentGameSlice.actions
+export const { resetGame, beginGame, endGame, updateScore, loadQuestion } = currentGameSlice.actions
 export default currentGameSlice.reducer
