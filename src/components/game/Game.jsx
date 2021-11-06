@@ -44,7 +44,7 @@ function Game() {
       gameMarkup = (
         <>
           Ready to go?
-          <button onClick={() => handleBeginGame()}>Yeah!</button>
+          <button onClick={handleBeginGame}>Yeah!</button>
         </>
       )
       break

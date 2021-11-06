@@ -1,3 +1,5 @@
+import { getRandomInteger } from '../utils'
+
 const API = {
   CORS_PROXY_DOMAIN: 'https://cors-anywhere.herokuapp.com/', // TODO: WTF
   DOMAIN: 'https://api.musixmatch.com/',
@@ -6,8 +8,6 @@ const API = {
   SAFE_MAX_TRACKS_PAGE: 80,
   SAFE_MAX_ARTISTS_PAGE: 40,
 }
-
-const getRandomInteger = (max) => Math.floor(Math.random() * Math.floor(max) + 1) // TODO: move this
 
 export const getRandomTrack = async (country = 'wx') => {
   await new Promise((resolve) => setTimeout(resolve, 250))

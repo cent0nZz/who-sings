@@ -1,22 +1,26 @@
 import { useSelector } from 'react-redux'
+import GameChoise from '../game-choise/GameChoise'
+import { shuffleArray } from '../../utils'
 
 function GameQuestion(props) {
   const currentGame = useSelector((state) => state.currentGame)
   const currentQuestion = currentGame.questions[currentGame.index]
 
-  if (!currentQuestion) {
+  if (!currentQuestion) { // TODO: check this
     return null
   }
 
+  const shuffledChoises = shuffleArray([...currentQuestion.choises])
+
   return (
     <div>
-      <p>{currentQuestion.snippet}</p>
-      <div>
+      <p>"{currentQuestion.snippet}"</p>
+      <ul>
         {
-          currentQuestion.choises.map((choise, idx) =>
-            <button key={idx} onClick={() => props.onChoiseClick(choise)}>{choise.artistName}</button>)
+          shuffledChoises
+            .map((choise, idx) => <li key={idx}><GameChoise choise={choise} onChoiseClick={props.onChoiseClick} /></li>)
         }
-      </div>
+      </ul>
     </div>
   )
 }
