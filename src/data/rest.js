@@ -10,6 +10,7 @@ const API = {
 const getRandomInteger = (max) => Math.floor(Math.random() * Math.floor(max) + 1) // TODO: move this
 
 export const getRandomTrack = async (country = 'wx') => {
+  await new Promise((resolve) => setTimeout(resolve, 250))
   return {
     track: {
       id: 123,
@@ -57,9 +58,10 @@ export const getRandomTrack = async (country = 'wx') => {
 }
 
 export const getRandomArtist = async (country = 'wx') => {
+  await new Promise((resolve) => setTimeout(resolve, 250))
   return {
-    id: 445,
-    name: 'lop',
+    artistId: 445,
+    artistName: 'lop',
   }
 
   const page = getRandomInteger(API.SAFE_MAX_ARTISTS_PAGE)
@@ -86,12 +88,13 @@ export const getRandomArtist = async (country = 'wx') => {
   }
 
   return {
-    id: artist.artist_id,
-    name: artist.artist_name,
+    artistId: artist.artist_id,
+    artistName: artist.artist_name,
   }
 }
 
 export const getTrackSnippet = async (trackId) => {
+  await new Promise((resolve) => setTimeout(resolve, 250))
   return 'hera me from miles'
 
   if (!trackId) {

@@ -13,7 +13,8 @@ function GameQuestion(props) {
       <p>{currentQuestion.snippet}</p>
       <div>
         {
-          currentQuestion.choises.map((choise, idx) => <button key={idx} onClick={() => props.onChoiseClick(choise.id)}>{choise.name}</button>)
+          currentQuestion.choises.map((choise, idx) =>
+            <button key={idx} onClick={() => props.onChoiseClick(choise)}>{choise.artistName}</button>)
         }
       </div>
     </div>

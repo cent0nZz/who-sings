@@ -1,4 +1,4 @@
-import { addUser, getUserByName } from '../data/clientDatabase';
+import { addUser, getUserByName } from '../data/clientDatabase'
 import { logIn } from './slices/currentUserSlice'
 
 export const persistanceMiddleware = () => (next) => (action) => {
@@ -20,5 +20,5 @@ export const persistanceMiddleware = () => (next) => (action) => {
     }
   }
 
-  return next(action);
+  return next(action)
 }

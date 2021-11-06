@@ -4,7 +4,7 @@ import Game from '../game/Game'
 function Quiz() {
   return (
     <div>
-      <Link to="/">Back</Link>
+      <Link to='/'>Back to Dashboard</Link>
       <Game />
     </div>
   )

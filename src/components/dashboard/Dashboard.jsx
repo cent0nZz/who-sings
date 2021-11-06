@@ -8,8 +8,8 @@ function Dashboard() {
   return (
     <div>
       <h2>{currentUser.isLogged ? `Welcome ${currentUser.name}` : 'Welcome!'}</h2>
-      <Link to="/quiz">Play Now</Link>
-      <Link to="/leaderboard">Leaderboard</Link>
+      <Link to='/quiz'>Play Now</Link>
+      <Link to='/leaderboard'>Leaderboard</Link>
       {currentUser.isLogged && <PlayedGamesRecap />}
     </div>
   )

@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { getRandomTrack, getRandomArtist, getTrackSnippet } from '../../data/rest';
+import { getRandomTrack, getRandomArtist, getTrackSnippet } from '../../data/rest'
 
-export const GameStates = Object.freeze({ "preGame": 1, "inGame": 2, "postGame": 3 }) // TODO: move this
+export const GameStates = Object.freeze({ 'preGame': 1, 'inGame': 2, 'postGame': 3 }) // TODO: move this
 
 export const loadNextQuestion = createAsyncThunk(
   'currentGame/loadNextQuestion',
@@ -14,7 +14,7 @@ export const loadNextQuestion = createAsyncThunk(
     return {
       snippet: randomTrackSnippet,
       snippetArtist: randomTrack.artist,
-      otherArtists: [randomArtistOne, randomArtistTwo]
+      otherArtists: [randomArtistOne, randomArtistTwo],
     }
   }
 )
@@ -23,7 +23,8 @@ export const currentGameSlice = createSlice({
   name: 'currentGame',
   initialState: {
     gameState: GameStates.preGame,
-    beginTimestamp: 0,
+    time: 0,
+    numCorrectChoises: 0,
     questions: [],
     index: -1,
     score: 0,
@@ -31,33 +32,45 @@ export const currentGameSlice = createSlice({
   reducers: {
     resetGame: (state) => {
       state.gameState = GameStates.preGame
-      state.beginTimestamp = 0
+      state.time = 0
+      state.numCorrectChoises = 0
       state.questions = []
       state.index = -1
       state.score = 0
     },
     beginGame: (state) => {
       state.gameState = GameStates.inGame
-      state.beginTimestamp = Date.now() // TODO: make reducer pure
+      state.time = Date.now() // TODO: make reducer pure
     },
     endGame: (state) => {
       state.gameState = GameStates.postGame
+      state.time = Date.now() // TODO: make reducer pure
       // TODO: intercept with middleware to save stats
     },
-    updateScore: (state, action) => {
+    updateProgress: (state, action) => {
       state.score += action.payload
+      action.payload && state.numCorrectChoises++
     },
   },
   extraReducers: (builder) => {
+    builder.addCase(loadNextQuestion.pending, (state) => {
+      state.index++
+    })
     builder.addCase(loadNextQuestion.fulfilled, (state, action) => {
       state.questions.push({
         snippet: action.payload.snippet,
-        choises: [action.payload.snippetArtist, ...action.payload.otherArtists]
+        choises: [
+          {
+            correct: true,
+            artistId: action.payload.snippetArtist.id,
+            artistName: action.payload.snippetArtist.name,
+          },
+          ...action.payload.otherArtists,
+        ],
       })
-      state.index++
     })
   },
 })
 
-export const { resetGame, beginGame, endGame, updateScore } = currentGameSlice.actions
+export const { resetGame, beginGame, endGame, updateProgress } = currentGameSlice.actions
 export default currentGameSlice.reducer

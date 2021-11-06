@@ -1,10 +1,12 @@
 import ProgressBar from '../progress-bar/ProgressBar'
 import Countdown from '../countdown/Countdown'
 import GameQuestion from '../game-question/GameQuestion'
-import { beginGame, endGame, updateScore, loadNextQuestion } from '../../redux/slices/currentGameSlice'
+import { resetGame, beginGame, endGame, updateProgress, loadNextQuestion } from '../../redux/slices/currentGameSlice'
 import { useSelector, useDispatch } from 'react-redux'
+import { useEffect } from 'react'
 import { GameStates } from '../../redux/slices/currentGameSlice'
 import '../../data/rest'
+import GameRecap from '../game-recap/GameRecap'
 
 const MAX = 10 // TODO: move/change this
 
@@ -12,51 +14,59 @@ function Game() {
   const dispatch = useDispatch()
   const currentGame = useSelector((state) => state.currentGame)
 
+  useEffect(() => {
+    return () => {
+      dispatch(resetGame())
+    }
+  }, [])
+
   const handleBeginGame = () => {
     dispatch(beginGame())
     dispatch(loadNextQuestion())
   }
 
   const handleUserSelection = (choise) => {
-    // logic
-    if (currentGame.index < MAX) {
-      dispatch(updateScore(10))
+    dispatch(updateProgress(choise.correct ? 10 : 0))
+
+    if (currentGame.index + 1 < MAX) {
       dispatch(loadNextQuestion())
     } else {
       dispatch(endGame())
     }
   }
 
-  let dynamicContent
+  let gameMarkup
   switch (currentGame.gameState) {
     case GameStates.preGame:
-      dynamicContent = (<>
-        Ready to go?
-        <button onClick={() => handleBeginGame()}>Yeah!</button>
-      </>)
-      break;
+      gameMarkup = (
+        <>
+          Ready to go?
+          <button onClick={() => handleBeginGame()}>Yeah!</button>
+        </>
+      )
+      break
     case GameStates.inGame:
-      dynamicContent = (
+      gameMarkup = (
         <>
           <GameQuestion onChoiseClick={handleUserSelection} />
           <div>
-            <ProgressBar current={currentGame.index} total={MAX} />
+            <ProgressBar current={currentGame.index + 1} total={MAX} />
             <Countdown />
           </div>
         </>
       )
-      break;
+      break
     case GameStates.postGame:
-      dynamicContent = (
-        <>PostGame</>
+      gameMarkup = (
+        <GameRecap points={currentGame.score} time={1} numCorrectChoises={currentGame.numCorrectChoises} totalChoises={MAX} />
       )
-      break;
+      break
     default:
-      dynamicContent = null
+      gameMarkup = null
   }
 
   return (
-    <div>{dynamicContent}</div>
+    <div>{gameMarkup}</div>
   )
 }
 

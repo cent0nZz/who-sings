@@ -15,15 +15,15 @@ function App() {
       <Header />
       <Routes>
         <Route index element={<Dashboard />} />
-        <Route path="quiz" element={
+        <Route path='quiz' element={
           currentUser.isLogged
           ? <Quiz />
-          : <Navigate replace to="/" />
+          : <Navigate replace to='/' />
         } />
-        <Route path="leaderboard" element={<Leaderboard />} />
+        <Route path='leaderboard' element={<Leaderboard />} />
       </Routes>
     </>
-  );
+  )
 }
 
-export default App;
+export default App
