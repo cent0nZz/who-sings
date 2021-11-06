@@ -1,6 +1,6 @@
 function GameChoise(props) {
   return (
-    <button onClick={() => props.onChoiseClick(props.choise)}>{props.choise.artistName}</button>
+    <button disabled={props.isDisabled} onClick={() => props.onChoiseClick(props.choise)}>{props.choise.artistName}</button>
   )
 }
 

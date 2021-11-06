@@ -5,20 +5,30 @@ import { shuffleArray } from '../../utils'
 function GameQuestion(props) {
   const currentGame = useSelector((state) => state.currentGame)
   const currentQuestion = currentGame.questions[currentGame.index]
+  let question
 
-  if (!currentQuestion) { // TODO: check this
-    return null
+  if (currentQuestion) {
+    question = { ...currentQuestion, choises: [...currentQuestion.choises] }
+    question.choises = shuffleArray(question.choises)
+  } else {
+    question = {
+      skeleton: true,
+      snippet: '...',
+      choises: [
+        { artistName: '...' },
+        { artistName: '...' },
+        { artistName: '...' },
+      ]
+    }
   }
-
-  const shuffledChoises = shuffleArray([...currentQuestion.choises])
 
   return (
     <div>
-      <p>"{currentQuestion.snippet}"</p>
+      <p>“{question.snippet}”</p>
       <ul>
         {
-          shuffledChoises
-            .map((choise, idx) => <li key={idx}><GameChoise choise={choise} onChoiseClick={props.onChoiseClick} /></li>)
+          question.choises
+            .map((choise, idx) => <li key={idx}><GameChoise choise={choise} isDisabled={question.skeleton} onChoiseClick={props.onChoiseClick} /></li>)
         }
       </ul>
     </div>
