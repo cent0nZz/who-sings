@@ -1,7 +1,7 @@
 function Footer() {
   return (
     <footer>
-      <p>Powered by Muisxmatch</p>
+      <p>Powered by Musixmatch</p>
     </footer>
   )
 }

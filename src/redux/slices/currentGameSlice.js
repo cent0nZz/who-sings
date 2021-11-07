@@ -3,10 +3,11 @@ import { getRandomTrack, getRandomArtist, getTrackSnippet } from '../../data/res
 import { shuffleArray } from '../../utils'
 
 export const GameStates = Object.freeze({ 'preGame': 1, 'inGame': 2, 'postGame': 3 }) // TODO: move this
+const COUNTRY = 'it' // TODO: move this
 
 const getQuestion = async () => {
   const randomSnippetPromise = new Promise(async (resolve) => {
-    const randomTrack = await getRandomTrack()
+    const randomTrack = await getRandomTrack(COUNTRY)
     const randomTrackSnippet = await getTrackSnippet(randomTrack.track.id)
     resolve({
       snippet: randomTrackSnippet,
@@ -14,7 +15,7 @@ const getQuestion = async () => {
     })
   })
   const [randomSnippet, randomArtistOne, randomArtistTwo] =
-    await Promise.all([randomSnippetPromise, getRandomArtist(), getRandomArtist()])
+    await Promise.all([randomSnippetPromise, getRandomArtist(COUNTRY), getRandomArtist(COUNTRY)])
 
   return {
     ...randomSnippet,
