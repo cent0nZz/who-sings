@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { getRandomTrack, getRandomArtist, getTrackSnippet } from '../../data/rest'
+import { shuffleArray } from '../../utils'
 
 export const GameStates = Object.freeze({ 'preGame': 1, 'inGame': 2, 'postGame': 3 }) // TODO: move this
 
@@ -76,7 +77,7 @@ export const currentGameSlice = createSlice({
       state.index++
     })
     builder.addCase(loadNextQuestion.fulfilled, (state, action) => {
-      state.questions.push({
+      const newQuestion = {
         snippet: action.payload.snippet,
         choises: [
           {
@@ -86,7 +87,9 @@ export const currentGameSlice = createSlice({
           },
           ...action.payload.otherArtists,
         ],
-      })
+      }
+      newQuestion.choises = shuffleArray(newQuestion.choises)
+      state.questions.push(newQuestion)
     })
   },
 })

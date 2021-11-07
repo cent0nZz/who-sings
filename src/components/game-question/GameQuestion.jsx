@@ -2,7 +2,6 @@ import Countdown from '../countdown/Countdown'
 import GameChoise from '../game-choise/GameChoise'
 import { updateProgress } from '../../redux/slices/currentGameSlice'
 import { useSelector, useDispatch } from 'react-redux'
-import { shuffleArray } from '../../utils'
 import { useState } from 'react'
 
 const CORRECT_CHOISE_POINTS = 50 // TODO: move/change this
@@ -19,7 +18,6 @@ function GameQuestion(props) {
 
   if (currentQuestion) {
     question = { ...currentQuestion, choises: [...currentQuestion.choises] }
-    //question.choises = shuffleArray(question.choises)
   } else {
     question = {
       skeleton: true,
