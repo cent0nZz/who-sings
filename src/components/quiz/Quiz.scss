@@ -1,0 +1,22 @@
+@import '../../shared';
+
+.quiz {
+  display: flex;
+  flex-direction: column;
+
+  &__back {
+    align-self: flex-end;
+    font-weight: bold;
+    color: $primary-color;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    border: none;
+    text-decoration: underline;
+    font-size: 16px;
+
+    &:visited {
+      color: $primary-color;
+    }
+  }
+}

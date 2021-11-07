@@ -2,7 +2,8 @@
 
 .user {
     display: flex;
-    align-items: baseline;
+    align-items: center;
+    height: 40px;
 
     &__name {
         margin-right: $small-space;
