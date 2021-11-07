@@ -1,0 +1,21 @@
+@import "../../shared";
+
+.played-game-recap {
+  display: flex;
+  height: 48px;
+  align-items: center;
+
+  &__id {
+    width: 40px;
+    margin-right: 5px;
+  }
+
+  &__time {
+    width: 145px;
+    margin-right: 5px;
+  }
+
+  &__points {
+    width: 70px;
+  }
+}
