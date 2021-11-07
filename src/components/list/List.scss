@@ -1,8 +1,15 @@
 @import "../../shared";
 
 .list {
+  width: min-content;
+
   &__item {
+    width: min-content;
     display: flex;
-    justify-content: center;
+    border-top: 1px solid black;
+
+    &:first-child {
+      border-top: none;
+    }
   }
 }

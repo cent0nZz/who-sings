@@ -13,6 +13,8 @@
   }
 
   &__list {
+    display: flex;
+    justify-content: center;
     padding: 0 $medium-space;
     text-align: center;
   }
