@@ -1,0 +1,41 @@
+@import "../../shared";
+
+.user-stats {
+  display: flex;
+  height: 50px;
+  align-items: center;
+  padding: $small-space 0px;
+  border-top: 1px solid black;
+
+  &__you {
+    width: 45px;
+    margin-right: 5px;
+    border: 2px solid $negative-color;
+    padding: $ssmall-space;
+    border-radius: 16px;
+    font-weight: bold;
+    color: $negative-color;
+
+    &:empty {
+      border: none;
+    }
+  }
+
+  &__rank {
+    margin-left: 1px;
+    min-width: 45px;
+    margin-right: 5px;
+  }
+
+  &__name {
+    width: 120px;
+    margin-right: 5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  &__points {
+    width: 75px;
+  }
+}

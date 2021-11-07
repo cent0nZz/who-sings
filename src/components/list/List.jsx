@@ -1,7 +1,9 @@
+import './List.scss'
+
 function List(props) {
   return (
-    <ul>
-      {props.items?.map((item, idx) => <li key={idx}>{item}</li>)}
+    <ul className="list">
+      {props.items?.map((item, idx) => <li className="list__item" key={idx}>{item}</li>)}
     </ul>
   )
 }
