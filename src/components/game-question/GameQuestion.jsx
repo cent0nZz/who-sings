@@ -14,11 +14,9 @@ function GameQuestion(props) {
   const [revealResult, setRevealResult] = useState(false)
   const currentGame = useSelector((state) => state.currentGame)
   const currentQuestion = currentGame.questions[currentGame.index]
-  let question
+  let question = currentQuestion
 
-  if (currentQuestion) {
-    question = { ...currentQuestion, choises: [...currentQuestion.choises] }
-  } else {
+  if (!question) {
     question = {
       skeleton: true,
       snippet: '...',
@@ -48,14 +46,25 @@ function GameQuestion(props) {
           {
             question.choises
               .map((choise, idx) => <li key={idx}>
-                <GameChoise choise={choise} revealResult={revealResult} isDisabled={question.skeleton} onChoiseClick={handleChoiseClick} revealResultTimeMs={REVEAL_RESULT_TIME_MS}/>
+                <GameChoise
+                  choise={choise}
+                  revealResult={revealResult}
+                  isDisabled={question.skeleton || revealResult}
+                  onChoiseClick={handleChoiseClick}
+                  revealResultTimeMs={REVEAL_RESULT_TIME_MS} />
               </li>)
           }
         </ul>
       </div>
       <div>
         {props.children}
-        <Countdown active={activeCountdown && question} id={question?.snippet} seconds={QUESTION_MAX_TIME_SECS} onFinish={() => props.goToNextQuestion()} leftContent={'Time left: '} rightContent={'"'} />
+        <Countdown
+          active={activeCountdown && question}
+          id={question?.snippet}
+          seconds={QUESTION_MAX_TIME_SECS}
+          onFinish={() => props.goToNextQuestion()}
+          leftContent={'Time left: '}
+          rightContent={'"'} />
       </div>
     </div>
   )
