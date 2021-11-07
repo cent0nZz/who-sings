@@ -23,6 +23,7 @@ function Leaderboard() {
   return (
     <div className="leaderboard">
       <Link className="leaderboard__back" to='/'>Back to Dashboard</Link>
+      <h2 className="leaderboard__title">Leaderboard</h2>
       <div className="leaderboard__list">
         {
           user.length > 0

@@ -15,7 +15,7 @@ function App() {
     <div className="app">
       <Header />
 
-      <main>
+      <main className="main">
         <Routes>
           <Route index element={<Dashboard />} />
           <Route path='quiz' element={

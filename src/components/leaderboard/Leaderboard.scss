@@ -6,10 +6,19 @@
 
   &__back {
     align-self: flex-end;
+    font-weight: bold;
+    color: #297373;
 
     &:visited {
-      color: initial;
+      color: #297373;
     }
+  }
+
+  &__title {
+    font-weight: bold;
+    font-size: 20px;
+    margin: $xlarge-space 0 $small-space;
+    color: #39393a;
   }
 
   &__list {
