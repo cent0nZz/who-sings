@@ -5,7 +5,7 @@
     font-weight: bold;
     font-size: 20px;
     margin: $xlarge-space 0 $small-space;
-    color: #39393a;
+    color: $tertiary-color;
   }
 
   &__actions {
@@ -15,7 +15,7 @@
 
   &__action {
     text-decoration: none;
-    padding: 8px;
+    padding: $small-space;
     border-radius: 8px;
     text-transform: uppercase;
     font-weight: bold;

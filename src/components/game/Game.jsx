@@ -5,11 +5,12 @@ import { refresh } from '../../redux/slices/currentUserSlice'
 import { resetGame, beginGame, endGame, loadNextQuestion, GameStates } from '../../redux/slices/currentGameSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect, useState } from 'react'
-import '../../data/rest'
 import GameRecap from '../game-recap/GameRecap'
 
+import './Game.scss'
+
 const MAX = 10 // TODO: move/change this
-const GAME_INTRO_LENGTH_SECS = 3 // TODO: move/change this
+const GAME_INTRO_LENGTH_SECS = 30000 // TODO: move/change this
 
 function Game() {
   const [showGameIntro, setShowGameIntro] = useState(false)
@@ -43,31 +44,37 @@ function Game() {
 
   if (showGameIntro) {
     gameMarkup = (
-      <Countdown active={true} seconds={GAME_INTRO_LENGTH_SECS} onFinish={handleBeginGame} />
+      <div className="game">
+        <Countdown active={true} seconds={GAME_INTRO_LENGTH_SECS} onFinish={handleBeginGame} />
+      </div>
     )
   } else {
     switch (currentGame.gameState) {
       case GameStates.preGame:
         gameMarkup = (
-          <>
-            Ready to go?
-            <button onClick={() => setShowGameIntro(true)}>Yeah!</button>
-          </>
+          <div className="game game--pre-game">
+            <h2 className="game__start-intro">Ready to start?</h2>
+            <button className="game__start-cta" onClick={() => setShowGameIntro(true)}>Yeah!</button>
+          </div>
         )
         break
       case GameStates.inGame:
         gameMarkup = (
-          <GameQuestion goToNextQuestion={goToNextQuestion}>
-            <>
-              Score: {currentGame.score}pt.
-              <ProgressBar current={currentGameUIIndex} total={MAX} />
-            </>
-          </GameQuestion>
+          <div className="game game--in-game">
+            <GameQuestion goToNextQuestion={goToNextQuestion}>
+              <>
+                Score: {currentGame.score}pt.
+                <ProgressBar current={currentGameUIIndex} total={MAX} />
+              </>
+            </GameQuestion>
+          </div>
         )
         break
       case GameStates.postGame:
         gameMarkup = (
-          <GameRecap points={currentGame.score} time={currentGame.time} numCorrectChoises={currentGame.numCorrectChoises} totalChoises={MAX} />
+          <div className="game game--post-game">
+            <GameRecap points={currentGame.score} time={currentGame.time} numCorrectChoises={currentGame.numCorrectChoises} totalChoises={MAX} />
+          </div>
         )
         break
       default:
@@ -75,9 +82,7 @@ function Game() {
     }
   }
 
-  return (
-    <div>{gameMarkup}</div>
-  )
+  return (gameMarkup)
 }
 
 export default Game
