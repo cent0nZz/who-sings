@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import './GameChoise.css'
+import './GameChoise.scss'
 
 function GameChoise(props) {
   const [selected, setSelected] = useState(null)

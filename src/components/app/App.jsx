@@ -6,7 +6,7 @@ import Quiz from '../quiz/Quiz'
 import Leaderboard from '../leaderboard/Leaderboard'
 import { useSelector } from 'react-redux'
 import Footer from '../footer/Footer'
-import './App.css'
+import './App.scss'
 
 function App() {
   const currentUser = useSelector((state) => state.currentUser)
