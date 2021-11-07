@@ -1,8 +1,21 @@
 @import "../../shared";
 
 .played-games-recap {
-  display: flex;
-  justify-content: center;
-  padding: 0 $medium-space;
-  text-align: center;
+  border-top: 3px solid $negative-color;
+  padding-top: $large-space;
+
+  &__title {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: $xsmall-space;
+    color: $tertiary-color;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: center;
+    padding: 0 $medium-space;
+    text-align: center;
+    background-color: $secondary-color;
+  }
 }

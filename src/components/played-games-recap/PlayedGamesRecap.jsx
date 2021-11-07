@@ -12,7 +12,10 @@ function PlayedGamesRecap() {
 
   return (
     <div className="played-games-recap">
-      <List items={playedGames} />
+      <h3 className="played-games-recap__title">Your latest games:</h3>
+      <div className="played-games-recap__list">
+        <List items={playedGames} />
+      </div>
     </div>
   )
 }

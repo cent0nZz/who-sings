@@ -17,14 +17,14 @@
   &__title {
     font-weight: bold;
     font-size: 20px;
-    margin: $xlarge-space 0 $small-space;
+    margin: $xlarge-space 0 $xsmall-space;
     color: #39393a;
   }
 
   &__list {
     display: flex;
     justify-content: center;
-    padding: 0 $medium-space;
     text-align: center;
+    background-color: $secondary-color;
   }
 }

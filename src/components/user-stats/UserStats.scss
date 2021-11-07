@@ -13,15 +13,18 @@
     border-radius: 16px;
     font-weight: bold;
     color: $negative-color;
+    background-color: white;
 
     &:empty {
       border: none;
+      background-color: transparent;
     }
   }
 
   &__rank {
-    width: 45px;
+    width: 35px;
     margin-right: 5px;
+    font-weight: bold;
   }
 
   &__name {
@@ -30,9 +33,12 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    color: $primary-color;
+    font-weight: bold;
   }
 
   &__points {
-    width: 75px;
+    width: 65px;
+    text-decoration: underline;
   }
 }

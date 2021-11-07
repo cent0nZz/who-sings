@@ -8,14 +8,18 @@
   &__id {
     width: 40px;
     margin-right: 5px;
+    font-weight: bold;
   }
 
   &__time {
-    width: 145px;
+    width: 165px;
     margin-right: 5px;
+    color: $primary-color;
+    font-weight: bold;
   }
 
   &__points {
     width: 70px;
+    text-decoration: underline;
   }
 }
