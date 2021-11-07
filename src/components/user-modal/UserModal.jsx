@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import Modal from '../modal/Modal'
 
+import './UserModal.scss'
+
 function UserModal(props) {
   const [usernameField, setUsernameField] = useState('')
 
@@ -8,7 +10,7 @@ function UserModal(props) {
     setUsernameField('')
     props.onClose()
   }
-  
+
   const handleLogInClick = () => {
     if (!usernameField) {
       alert('Please insert a username!')
@@ -25,11 +27,13 @@ function UserModal(props) {
 
   return (
     <Modal isActive={props.isActive} title="Log-In" onClose={handleCloseClick}>
-      <label>
-        Username:
-        <input type='text' name='username' autoComplete='off' value={usernameField} onChange={handleUsernameChange} />
-      </label>
-      <button onClick={handleLogInClick}>LogIn</button>
+      <div className="user-modal">
+        <label className="user-modal__label">
+          Username:
+          <input className="user-modal__input" type='text' name='username' autoComplete='off' value={usernameField} onChange={handleUsernameChange} />
+        </label>
+        <button className="user-modal__cta" onClick={handleLogInClick}>LogIn</button>
+      </div>
     </Modal>
   )
 }
