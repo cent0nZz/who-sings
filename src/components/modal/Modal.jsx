@@ -1,3 +1,5 @@
+import './Modal.scss'
+
 function Modal(props) {
   const handleCloseClick = () => {
     props.onClose()
@@ -8,9 +10,9 @@ function Modal(props) {
   }
 
   return (
-    <div>
-      <button onClick={handleCloseClick}>X</button>
-      <div>
+    <div className="modal">
+      <button className="modal__close" onClick={handleCloseClick}>X</button>
+      <div className="modal__content">
         {props.children}
       </div>
     </div>

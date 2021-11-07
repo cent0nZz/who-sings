@@ -1,0 +1,21 @@
+@import '../../shared';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 2px solid $tertiary-color;
+  padding: $medium-space;
+  margin-bottom: $xlarge-space;
+  background-color: $secondary-color;
+
+  &__title {
+    font-size: 24px;
+    font-weight: bold;
+    color: $tertiary-color;
+  }
+
+  &__user {
+
+  }
+}

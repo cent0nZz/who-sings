@@ -1,0 +1,17 @@
+@import '../../shared';
+
+.footer {
+  padding: $xsmall-space $medium-space $medium-space $medium-space;
+  background-color: $primary-color;
+  border-top: $small-space solid $tertiary-color;
+  margin-top: $xlarge-space;
+  color: white;
+
+  &__notice {
+    font-size: 14px;
+  }
+
+  &__mxm {
+    font-weight: bold;
+  }
+}

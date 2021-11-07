@@ -4,6 +4,8 @@ import { logIn, logOut } from '../../redux/slices/currentUserSlice'
 import UserModal from '../user-modal/UserModal'
 import { GameStates } from '../../redux/slices/currentGameSlice'
 
+import './User.scss'
+
 function User() {
   const dispatch = useDispatch()
   const currentUser = useSelector((state) => state.currentUser)
@@ -20,14 +22,14 @@ function User() {
   }
 
   return (
-    <div>
+    <div className="user">
       <UserModal isActive={showModal} onSubmit={handleLogIn} onClose={() => setShowModal(false)} />
-      {currentUser.isLogged && currentUser.name}
+      <div className="user__name">{currentUser.isLogged && currentUser.name}</div>
       {
         currentGame.gameState !== GameStates.inGame
           ? (currentUser.isLogged
-            ? <button onClick={handleLogOut}>LogOut</button>
-            : <button onClick={() => setShowModal(true)}>Proceed to LogIn</button>)
+            ? <button className="user__cta user__cta--logout" onClick={handleLogOut}>Log-Out</button>
+            : <button className="user__cta user__cta--login" onClick={() => setShowModal(true)}>Log-In</button>)
           : ''
       }
     </div>

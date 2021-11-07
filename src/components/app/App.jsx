@@ -12,7 +12,7 @@ function App() {
   const currentUser = useSelector((state) => state.currentUser)
 
   return (
-    <>
+    <div className="app">
       <Header />
 
       <main>
@@ -28,7 +28,7 @@ function App() {
       </main>
 
       <Footer />
-    </>
+    </div>
   )
 }
 

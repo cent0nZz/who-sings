@@ -1,7 +1,9 @@
+import './Footer.scss'
+
 function Footer() {
   return (
-    <footer>
-      <p>Powered by Musixmatch</p>
+    <footer className="footer">
+      <p className="footer__notice">Powered by <span className="footer__mxm">Musixmatch</span></p>
     </footer>
   )
 }
