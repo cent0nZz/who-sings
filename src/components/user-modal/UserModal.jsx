@@ -10,8 +10,13 @@ function UserModal(props) {
   }
   
   const handleLogInClick = () => {
-    setUsernameField('')
+    if (!usernameField) {
+      alert('Please insert a username!')
+      return
+    }
+
     props.onSubmit(usernameField)
+    setUsernameField('')
   }
 
   const handleUsernameChange = (evt) => {
