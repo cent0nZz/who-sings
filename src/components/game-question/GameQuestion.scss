@@ -1,0 +1,29 @@
+@import '../../shared';
+
+.game-question {
+  &__top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__snippet {
+    margin-bottom: $medium-space;
+    font-style: italic;
+    font-size: 20px;
+  }
+
+  &__choises {
+    display: flex;
+    align-items: stretch;
+  }
+
+  &__choise {
+    flex: 0 0 33.3%;
+    border-left: 2px solid black;
+
+    &:first-child {
+      border-left: none;
+    }
+  }
+}

@@ -4,6 +4,8 @@ import { updateProgress } from '../../redux/slices/currentGameSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import { useState } from 'react'
 
+import './GameQuestion.scss'
+
 const CORRECT_CHOISE_POINTS = 50 // TODO: move/change this
 const QUESTION_MAX_TIME_SECS = 100000000 // TODO: move/change this
 const REVEAL_RESULT_TIME_MS = 2500 // TODO: move/change this
@@ -48,13 +50,13 @@ function GameQuestion(props) {
   }
 
   return (
-    <div>
-      <div>
-        <p>“{question.snippet}”</p>
-        <ul>
+    <div className="game-question">
+      <div className="game-question__top">
+        <p className="game-question__snippet">“{question.snippet}”</p>
+        <ul className="game-question__choises">
           {
             question.choises
-              .map((choise, idx) => <li key={idx}>
+              .map((choise, idx) => <li className="game-question__choise" key={idx}>
                 <GameChoise
                   choise={choise}
                   revealResult={revealResult}
@@ -65,7 +67,7 @@ function GameQuestion(props) {
           }
         </ul>
       </div>
-      <div>
+      <div className="game-question__bottom">
         {props.children}
         <Countdown
           active={activeCountdown && question}

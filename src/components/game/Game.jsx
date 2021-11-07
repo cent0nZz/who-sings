@@ -9,7 +9,7 @@ import GameRecap from '../game-recap/GameRecap'
 
 import './Game.scss'
 
-const MAX = 10 // TODO: move/change this
+const MAX = 1 // TODO: move/change this
 const GAME_INTRO_LENGTH_SECS = 3 // TODO: move/change this
 
 function Game() {
