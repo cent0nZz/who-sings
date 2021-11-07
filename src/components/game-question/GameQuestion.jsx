@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useState } from 'react'
 
 const CORRECT_CHOISE_POINTS = 50 // TODO: move/change this
-const QUESTION_MAX_TIME_SECS = 10 // TODO: move/change this
+const QUESTION_MAX_TIME_SECS = 100000000 // TODO: move/change this
 const REVEAL_RESULT_TIME_MS = 2500 // TODO: move/change this
 
 function GameQuestion(props) {

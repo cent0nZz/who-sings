@@ -1,4 +1,4 @@
-@import '../../shared';
+@import "../../shared";
 
 .quiz {
   display: flex;
@@ -18,5 +18,30 @@
     &:visited {
       color: $primary-color;
     }
+  }
+}
+
+.quit-quiz {
+  display: flex;
+  flex-direction: column;
+
+  &__actions {
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+    margin-top: $medium-space;
+  }
+
+  &__action {
+    padding: $small-space;
+    text-transform: uppercase;
+    background-color: $negative-color;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    border: none;
+    font-size: 14px;
+    line-height: 14px;
+    text-decoration: none;
   }
 }

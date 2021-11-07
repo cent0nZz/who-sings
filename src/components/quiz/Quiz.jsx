@@ -13,11 +13,13 @@ function Quiz() {
 
   return (
     <div className="quiz">
-      <Modal isActive={showModal} onClose={() => setShowModal(false)}>
-        Are you sure you want to quit the current game? All the progress and stats will be lost!
+      <Modal isActive={showModal} title="Quit confirmation" onClose={() => setShowModal(false)}>
         <div className="quit-quiz">
-          <Link className="quit-quiz__yes" to='/'>Yes, quit</Link>
-          <button className="quit-quiz__no" onClick={() => setShowModal(false)}>No, stay</button>
+          Are you sure you want to quit the current game? All the progress and stats will be lost!
+          <div className="quit-quiz__actions">
+            <Link className="quit-quiz__action quit-quiz__action--yes" to='/'>Yes, quit</Link>
+            <button className="quit-quiz__action quit-quiz__action--no style-as-anchor" onClick={() => setShowModal(false)}>No, stay</button>
+          </div>
         </div>
       </Modal>
       {
