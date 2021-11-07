@@ -10,7 +10,7 @@ import GameRecap from '../game-recap/GameRecap'
 import './Game.scss'
 
 const MAX = 10 // TODO: move/change this
-const GAME_INTRO_LENGTH_SECS = 30000 // TODO: move/change this
+const GAME_INTRO_LENGTH_SECS = 3 // TODO: move/change this
 
 function Game() {
   const [showGameIntro, setShowGameIntro] = useState(false)
@@ -45,7 +45,9 @@ function Game() {
   if (showGameIntro) {
     gameMarkup = (
       <div className="game">
-        <Countdown active={true} seconds={GAME_INTRO_LENGTH_SECS} onFinish={handleBeginGame} />
+        <div className="game__intro-countdown">
+          <Countdown active={true} seconds={GAME_INTRO_LENGTH_SECS} onFinish={handleBeginGame} />
+        </div>
       </div>
     )
   } else {
