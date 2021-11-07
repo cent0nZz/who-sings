@@ -24,7 +24,7 @@ function UserModal(props) {
   }
 
   return (
-    <Modal isActive={props.isActive} onClose={handleCloseClick}>
+    <Modal isActive={props.isActive} title="Log-In" onClose={handleCloseClick}>
       <label>
         Username:
         <input type='text' name='username' autoComplete='off' value={usernameField} onChange={handleUsernameChange} />

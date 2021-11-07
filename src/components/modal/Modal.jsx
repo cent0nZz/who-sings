@@ -10,12 +10,18 @@ function Modal(props) {
   }
 
   return (
-    <div className="modal">
-      <button className="modal__close" onClick={handleCloseClick}>X</button>
-      <div className="modal__content">
-        {props.children}
+    <>
+      <div className="modal-bg" aria-hidden></div>
+      <div className="modal">
+        <div className="modal__header">
+          <h3 className="modal__title">{props.title ?? ''}</h3>
+          <button className="modal__close" onClick={handleCloseClick}>X</button>
+        </div>
+        <div className="modal__content">
+          {props.children}
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 

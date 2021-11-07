@@ -4,18 +4,15 @@
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  border-bottom: 2px solid $tertiary-color;
+  border-bottom: 2px solid $negative-color;
   padding: $medium-space;
   margin-bottom: $xlarge-space;
-  background-color: $secondary-color;
+  background-color: $tertiary-color;
+  box-shadow: 0 8px 12px -8px $negative-color;
+  color: white;
 
   &__title {
     font-size: 24px;
     font-weight: bold;
-    color: $tertiary-color;
-  }
-
-  &__user {
-
   }
 }
