@@ -6,6 +6,11 @@ import './PlayedGamesRecap.scss'
 
 function PlayedGamesRecap() {
   const currentUser = useSelector((state) => state.currentUser)
+
+  if (!currentUser?.playedGames.length) {
+    return null
+  }
+
   const playedGames =
     [...currentUser?.playedGames].sort((a, b) => b.id - a.id)
       .map(playedGame => <PlayedGameRecap id={playedGame.id} timestamp={playedGame.timestamp} totalPoints={playedGame.totalPoints} />)
