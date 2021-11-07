@@ -28,13 +28,22 @@ function GameQuestion(props) {
     }
   }
 
-  const handleChoiseClick = async (choise) => {
-    dispatch(updateProgress(choise.correct ? CORRECT_CHOISE_POINTS : 0))
+  const handleRevealResult = async () => {
     setActiveCountdown(false)
     setRevealResult(true)
     await new Promise(resolve => setTimeout(resolve, REVEAL_RESULT_TIME_MS))
     setRevealResult(false)
     setActiveCountdown(true)
+  }
+
+  const handleChoiseClick = async (choise) => {
+    dispatch(updateProgress(choise.correct ? CORRECT_CHOISE_POINTS : 0))
+    await handleRevealResult()
+    props.goToNextQuestion()
+  }
+
+  const handleGameTimeOut = async () => {
+    await handleRevealResult()
     props.goToNextQuestion()
   }
 
@@ -62,7 +71,7 @@ function GameQuestion(props) {
           active={activeCountdown && question}
           id={question?.snippet}
           seconds={QUESTION_MAX_TIME_SECS}
-          onFinish={() => props.goToNextQuestion()}
+          onFinish={handleGameTimeOut}
           leftContent={'Time left: '}
           rightContent={'"'} />
       </div>
