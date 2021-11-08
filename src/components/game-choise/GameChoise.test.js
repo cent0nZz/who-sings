@@ -1,6 +1,7 @@
 import React from 'react'
 import { render, screen, fireEvent } from '@testing-library/react'
 import GameChoise from './GameChoise'
+import { act } from 'react-dom/test-utils'
 
 let choise
 let revealResult
@@ -95,10 +96,14 @@ test('does have the selected-choise class for the specified revealResultTimeMs, 
     revealResultTimeMs={revealResultTimeMs} />)
 
   fireEvent.click(screen.getByRole('button'))
-  jest.advanceTimersByTime(500)
+  act(() => {
+    jest.advanceTimersByTime(500)
+  })
   expect(onChoiseClickFn).toHaveBeenCalled()
   expect(screen.getByRole('button')).toHaveClass('game-choise--selected')
-  jest.advanceTimersByTime(500)
+  act(() => {
+    jest.advanceTimersByTime(500)
+  })
   expect(screen.getByRole('button')).not.toHaveClass('game-choise--selected')
 
   jest.runOnlyPendingTimers()
