@@ -22,3 +22,7 @@ Simply running 'npm i' is enough to get all the necessary dependencies installed
 * Execute in development mode (with file watch): 'npm start'
 * Execute in production mode (with generation of a single build): 'npm run build'
 * Launch all tests: 'npm run test'
+
+## Help
+
+Due to Musixmatch APIs not sending CORS headers by default in the response, the app is forced to use a CORS reverse proxy (the free cors.bridged.cc in this case) to fetch data. If you encounter any 'fetch' related issues during execution it's most likely because the proxy server is having some sort of problem. In this occurrence please just try again, sorry for the inconvenience.
