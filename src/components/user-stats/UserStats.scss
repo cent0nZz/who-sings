@@ -1,13 +1,8 @@
 @import '../../shared';
 
 .user-stats {
-  display: flex;
-  height: 48px;
-  align-items: center;
-
   &__you {
     width: 45px;
-    margin-right: $ssmall-space;
     border: 2px solid $negative-color;
     padding: $ssmall-space;
     border-radius: 16px;
@@ -23,13 +18,11 @@
 
   &__rank {
     width: 35px;
-    margin-right: $ssmall-space;
     font-weight: bold;
   }
 
   &__name {
     width: 120px;
-    margin-right: $ssmall-space;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;

@@ -11,11 +11,4 @@
   &__title {
     @include heading;
   }
-
-  &__list {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    background-color: $secondary-color;
-  }
 }

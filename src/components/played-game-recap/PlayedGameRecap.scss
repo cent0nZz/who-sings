@@ -1,19 +1,13 @@
 @import '../../shared';
 
 .played-game-recap {
-  display: flex;
-  height: 48px;
-  align-items: center;
-
   &__id {
     width: 40px;
-    margin-right: $ssmall-space;
     font-weight: bold;
   }
 
   &__time {
     width: 185px;
-    margin-right: $ssmall-space;
     color: $primary-color;
     font-weight: bold;
     white-space: nowrap;

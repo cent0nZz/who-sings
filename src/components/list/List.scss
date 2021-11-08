@@ -1,7 +1,14 @@
 @import '../../shared';
 
 .list {
-  width: min-content;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  background-color: $secondary-color;
+
+  &__all-items {
+    width: min-content;
+  }
 
   &__item {
     width: min-content;
@@ -10,6 +17,20 @@
 
     &:first-child {
       border-top: none;
+    }
+  }
+
+  &__item-inner {
+    display: flex;
+    height: 48px;
+    align-items: center;
+
+    & > * {
+      margin-right: $ssmall-space;
+
+      &:last-child {
+        margin-right: 0;
+      }
     }
   }
 }
