@@ -7,10 +7,10 @@
 
   &__visual {
     display: flex;
-    border: 3px solid $negative-color;
+    border-bottom: 3px solid $negative-color;
     flex-wrap: nowrap;
     flex: 1;
-    border-radius: 8px;
+    border-radius: 20px;
   }
 
   &__visual-item {
@@ -42,7 +42,6 @@
   }
 
   &__text {
-    margin-top: $small-space;
-    font-weight: bold;
+    margin-top: 6px;
   }
 }

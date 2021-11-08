@@ -30,24 +30,28 @@
 
   &__bottom {
     display: flex;
+    align-items: center;
+    flex-wrap: wrap;
 
     & > * {
       flex: 1;
       display: flex;
       justify-content: center;
       padding: $small-space 0;
-      border-right: 2px solid $tertiary-color;
+      font-weight: bold;
+      white-space: nowrap;
 
       &:first-child > div {
         margin-right: auto;
       }
 
-      &:last-child {
-        border-right: none;
+      &:nth-child(2) {
+        order: 1;
+        flex-basis: 100%;
+      }
 
-        & > div {
-          margin-left: auto;
-        }
+      &:last-child > div {
+        margin-left: auto;
       }
     }
   }
