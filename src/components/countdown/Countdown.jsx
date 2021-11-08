@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 
+import './Countdown.scss'
+
 function Countdown(props) {
   const [timeLeft, setTimeLeft] = useState(props.seconds)
 
@@ -25,7 +27,7 @@ function Countdown(props) {
   }, [props, timeLeft])
 
   return (
-    <div>{props.leftContent}{timeLeft}{props.rightContent}</div>
+    <div className="countdown">{props.leftContent}{timeLeft}{props.rightContent}</div>
   )
 }
 
