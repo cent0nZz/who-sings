@@ -47,6 +47,14 @@ table {
 	border-spacing: 0;
 }
 
-* {
-	box-sizing: border-box;
+input, textarea, button {
+	font-family: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
 }
