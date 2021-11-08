@@ -1,17 +1,21 @@
-@import '../../shared';
+@import "../../shared";
 
 .header {
-  position: sticky;
-  top: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
   border-bottom: 2px solid $negative-color;
   padding: $medium-space;
   margin-bottom: $xlarge-space;
   background-color: $tertiary-color;
-  box-shadow: 0 8px 12px -8px $negative-color;
-  color: white;
+  box-shadow: 0 12px 10px -10px $negative-color;
+
+  &__wrapper {
+    @include wrapper;
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+  }
 
   &__title {
     font-size: 24px;

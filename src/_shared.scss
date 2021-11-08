@@ -16,6 +16,11 @@ $xxlarge-space: 48px;
 $xxxlarge-space: 64px;
 
 // Mixins
+@mixin wrapper {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
 @mixin heading {
   font-weight: bold;
   font-size: 20px;

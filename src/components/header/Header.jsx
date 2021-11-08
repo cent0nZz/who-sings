@@ -5,9 +5,11 @@ import './Header.scss'
 function Header() {
   return (
     <header className="header">
-      <h1 className="header__title">Who Sings?</h1>
-      <div className="header__user">
-        <User />
+      <div className="header__wrapper">
+        <h1 className="header__title">Who Sings?</h1>
+        <div className="header__user">
+          <User />
+        </div>
       </div>
     </header>
   )

@@ -7,11 +7,24 @@
   margin-top: $xxxlarge-space;
   color: white;
 
-  &__notice {
-    font-size: 14px;
+  &__wrapper {
+    @include wrapper;
   }
 
-  &__mxm {
+  &__notice {
+    font-size: 14px;
+
+    & > * {
+      display: block;
+      margin-bottom: $ssmall-space;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__name {
     font-weight: bold;
   }
 }
