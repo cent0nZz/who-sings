@@ -2,14 +2,14 @@ import Countdown from '../countdown/Countdown'
 import GameChoise from '../game-choise/GameChoise'
 import { updateProgress } from '../../redux/slices/currentGameSlice'
 import { useSelector, useDispatch } from 'react-redux'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { CORRECT_CHOISE_POINTS, QUESTION_TIMEOUT_SECS, QUESTION_REVEAL_RESULT_MS } from '../../constants'
 
 import './GameQuestion.scss'
 
 function GameQuestion(props) {
   const dispatch = useDispatch()
-  const [activeCountdown, setActiveCountdown] = useState(true)
+  const [activeCountdown, setActiveCountdown] = useState(false)
   const [revealResult, setRevealResult] = useState(false)
   const currentGame = useSelector((state) => state.currentGame)
   const currentQuestion = currentGame.questions[currentGame.index]
@@ -26,6 +26,10 @@ function GameQuestion(props) {
       ]
     }
   }
+
+  useEffect(() => {
+    setActiveCountdown(!!currentQuestion)
+  }, [currentQuestion])
 
   const handleRevealResult = async () => {
     setActiveCountdown(false)
