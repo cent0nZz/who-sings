@@ -28,15 +28,16 @@ export const loadNextQuestion = createAsyncThunk(
 
     while (true) {
       const newQuestion = await getQuestion()
+      debugger
 
       // Makes sure that there's a snippet, an artist for that snippet, 2 other artists, and that these 3 artists are all different
       if (
         !newQuestion.snippet ||
         !newQuestion.snippetArtist ||
         newQuestion.otherArtists.length !== 2 ||
-        newQuestion.otherArtists[0].artistName === newQuestion.otherArtists[1].artistName ||
-        newQuestion.otherArtists[0].artistName === newQuestion.snippetArtist ||
-        newQuestion.otherArtists[1].artistName === newQuestion.snippetArtist
+        newQuestion.otherArtists[0].artistId === newQuestion.otherArtists[1].artistId ||
+        newQuestion.otherArtists[0].artistId === newQuestion.snippetArtist.id ||
+        newQuestion.otherArtists[1].artistId === newQuestion.snippetArtist.id
       ) {
         continue
       }
