@@ -1,4 +1,4 @@
-@import "../../shared";
+@import '../../shared';
 
 .played-game-recap {
   display: flex;
@@ -7,13 +7,13 @@
 
   &__id {
     width: 40px;
-    margin-right: 5px;
+    margin-right: $ssmall-space;
     font-weight: bold;
   }
 
   &__time {
     width: 185px;
-    margin-right: 5px;
+    margin-right: $ssmall-space;
     color: $primary-color;
     font-weight: bold;
     white-space: nowrap;

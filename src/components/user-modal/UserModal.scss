@@ -1,9 +1,9 @@
-@import "../../shared";
+@import '../../shared';
 
 .user-modal {
     display: flex;
     flex-direction: column;
-    min-width: 280px;
+    min-width: $user-content-modal-min-width;
 
     &__label {
         display: flex;
