@@ -8,10 +8,10 @@ const COUNTRY = 'it' // TODO: move this
 const getQuestion = async () => {
   const randomSnippetPromise = new Promise(async (resolve) => {
     const randomTrack = await getRandomTrack(COUNTRY)
-    const randomTrackSnippet = await getTrackSnippet(randomTrack.track.id)
+    const randomTrackSnippet = await getTrackSnippet(randomTrack?.track.id)
     resolve({
       snippet: randomTrackSnippet,
-      snippetArtist: randomTrack.artist,
+      snippetArtist: randomTrack?.artist,
     })
   })
   const [randomSnippet, randomArtistOne, randomArtistTwo] =
@@ -31,12 +31,27 @@ export const loadNextQuestion = createAsyncThunk(
     while (true) {
       const newQuestion = await getQuestion()
 
-      /*if (!currentGameQuestions.some(question => question.snippet === newQuestion.snippet)) {
-        return newQuestion
-      }*/
-      if (true) {
+      // Makes sure that there's a snippet, an artist for that snippet, 2 other artists, and that these 3 artists are all different
+      if (
+        !newQuestion.snippet ||
+        !newQuestion.snippetArtist ||
+        newQuestion.otherArtists.length !== 2 ||
+        newQuestion.otherArtists[0].artistId === newQuestion.otherArtists[1].artistId ||
+        newQuestion.otherArtists[0].artistId === newQuestion.snippetArtist ||
+        newQuestion.otherArtists[1].artistId === newQuestion.snippetArtist
+      ) {
+        continue
+      }
+
+      // Makes sure that the snippet was not already asked in a previous question of the same game 
+      if (
+        !currentGameQuestions.some(question => question.snippet === newQuestion.snippet)
+      ) {
         return newQuestion
       }
+      /*if (true) {
+        return newQuestion
+      }*/
     }
   }
 )

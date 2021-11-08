@@ -12,10 +12,11 @@
   }
 
   &__time {
-    width: 165px;
+    width: 185px;
     margin-right: 5px;
     color: $primary-color;
     font-weight: bold;
+    white-space: nowrap;
   }
 
   &__points {

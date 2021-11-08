@@ -1,7 +1,9 @@
 import { getRandomInteger } from '../utils'
 
 const API = {
-  CORS_PROXY_DOMAIN: 'https://cors-anywhere.herokuapp.com/', // TODO: WTF
+  CORS_PROXY_DOMAIN: 'https://cors.bridged.cc/',
+  CORS_PROXY_KEY_HEADER: 'x-cors-grida-api-key',
+  CORS_PROXY_KEY_VALUE: '89115c21-e9de-4562-894f-0f411ffbbafa',
   DOMAIN: 'https://api.musixmatch.com/',
   PATH: 'ws/1.1',
   KEY: '3fb07e540d2703665988993a99813fee',
@@ -10,7 +12,7 @@ const API = {
 }
 
 export const getRandomTrack = async (country = 'wx') => {
-  await new Promise((resolve) => setTimeout(resolve, 250))
+  /*await new Promise((resolve) => setTimeout(resolve, 250))
   return {
     track: {
       id: 123,
@@ -20,7 +22,7 @@ export const getRandomTrack = async (country = 'wx') => {
       id: 321,
       name: 'oi',
     },
-  }
+  }*/
 
   const page = getRandomInteger(API.SAFE_MAX_TRACKS_PAGE)
   const fetchOptions = {
@@ -28,6 +30,8 @@ export const getRandomTrack = async (country = 'wx') => {
     cache: 'no-cache',
     headers: {
       'Accept': 'application/json',
+      'X-Requested-With': 'XHR',
+      [API.CORS_PROXY_KEY_HEADER]: API.CORS_PROXY_KEY_VALUE,
     },
   }
   const response = await fetch(`${API.CORS_PROXY_DOMAIN}${API.DOMAIN}${API.PATH}/chart.tracks.get?chart_name=hot&f_has_lyrics=1&page_size=1&page=${page}&country=${country}&apikey=${API.KEY}`, fetchOptions)
@@ -58,11 +62,11 @@ export const getRandomTrack = async (country = 'wx') => {
 }
 
 export const getRandomArtist = async (country = 'wx') => {
-  await new Promise((resolve) => setTimeout(resolve, 250))
+  /*await new Promise((resolve) => setTimeout(resolve, 250))
   return {
     artistId: 445,
     artistName: 'lop',
-  }
+  }*/
 
   const page = getRandomInteger(API.SAFE_MAX_ARTISTS_PAGE)
   const fetchOptions = {
@@ -70,6 +74,8 @@ export const getRandomArtist = async (country = 'wx') => {
     cache: 'no-cache',
     headers: {
       'Accept': 'application/json',
+      'X-Requested-With': 'XHR',
+      [API.CORS_PROXY_KEY_HEADER]: API.CORS_PROXY_KEY_VALUE,
     },
   }
   const response = await fetch(`${API.CORS_PROXY_DOMAIN}${API.DOMAIN}${API.PATH}/chart.artists.get?format=json&page_size=1&page=${page}&country=${country}&apikey=${API.KEY}`, fetchOptions)
@@ -94,8 +100,8 @@ export const getRandomArtist = async (country = 'wx') => {
 }
 
 export const getTrackSnippet = async (trackId) => {
-  await new Promise((resolve) => setTimeout(resolve, 250))
-  return 'hera me from miles'
+  /*await new Promise((resolve) => setTimeout(resolve, 250))
+  return 'hera me from miles'*/
 
   if (!trackId) {
     return null
@@ -106,6 +112,8 @@ export const getTrackSnippet = async (trackId) => {
     cache: 'no-cache',
     headers: {
       'Accept': 'application/json',
+      'X-Requested-With': 'XHR',
+      [API.CORS_PROXY_KEY_HEADER]: API.CORS_PROXY_KEY_VALUE,
     },
   }
   const response = await fetch(`${API.CORS_PROXY_DOMAIN}${API.DOMAIN}${API.PATH}/track.snippet.get?track_id=${trackId}&apikey=${API.KEY}`, fetchOptions)
