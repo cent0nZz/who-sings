@@ -1,0 +1,48 @@
+@import "../../shared";
+
+.progress-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__visual {
+    display: flex;
+    border: 3px solid $negative-color;
+    flex-wrap: nowrap;
+    flex: 1;
+    border-radius: 8px;
+  }
+
+  &__visual-item {
+    flex: 1;
+    width: 20px;
+    height: 20px;
+    margin: 6px 3px;
+    border-radius: 50%;
+
+    &:first-child {
+      margin-left: 6px;
+    }
+
+    &:last-child {
+      margin-right: 6px;
+    }
+
+    &--past {
+      background-color: $primary-color;
+    }
+
+    &--present {
+      background-color: $positive-color;
+    }
+
+    &--future {
+      background-color: $secondary-color;
+    }
+  }
+
+  &__text {
+    margin-top: $small-space;
+    font-weight: bold;
+  }
+}

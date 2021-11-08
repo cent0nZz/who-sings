@@ -2,7 +2,7 @@ import Countdown from '../countdown/Countdown'
 import GameChoise from '../game-choise/GameChoise'
 import { updateProgress } from '../../redux/slices/currentGameSlice'
 import { useSelector, useDispatch } from 'react-redux'
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 import './GameQuestion.scss'
 
@@ -68,14 +68,16 @@ function GameQuestion(props) {
         </ul>
       </div>
       <div className="game-question__bottom">
-        {props.children}
-        <Countdown
-          active={activeCountdown && question}
-          id={question?.snippet}
-          seconds={QUESTION_MAX_TIME_SECS}
-          onFinish={handleGameTimeOut}
-          leftContent={'Time left: '}
-          rightContent={'"'} />
+        {React.Children.toArray(props.children).map((child, idx) => <div key={idx}>{child}</div>)}
+        <div>
+          <Countdown
+            active={activeCountdown && question}
+            id={question?.snippet}
+            seconds={QUESTION_MAX_TIME_SECS}
+            onFinish={handleGameTimeOut}
+            leftContent={'⌛ '}
+            rightContent={'"'} />
+        </div>
       </div>
     </div>
   )

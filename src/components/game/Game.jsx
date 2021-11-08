@@ -9,7 +9,7 @@ import GameRecap from '../game-recap/GameRecap'
 
 import './Game.scss'
 
-const MAX = 1 // TODO: move/change this
+const MAX = 10 // TODO: move/change this
 const GAME_INTRO_LENGTH_SECS = 3 // TODO: move/change this
 
 function Game() {
@@ -64,10 +64,8 @@ function Game() {
         gameMarkup = (
           <div className="game game--in-game">
             <GameQuestion goToNextQuestion={goToNextQuestion}>
-              <>
-                Score: {currentGame.score}pt.
-                <ProgressBar current={currentGameUIIndex} total={MAX} />
-              </>
+              <div>Score: {currentGame.score}pt.</div>
+              <ProgressBar current={currentGameUIIndex} total={MAX} />
             </GameQuestion>
           </div>
         )

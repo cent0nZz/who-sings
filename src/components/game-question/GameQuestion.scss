@@ -1,10 +1,11 @@
-@import '../../shared';
+@import "../../shared";
 
 .game-question {
   &__top {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: $large-space;
   }
 
   &__snippet {
@@ -24,6 +25,30 @@
 
     &:first-child {
       border-left: none;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+
+    & > * {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      padding: $small-space 0;
+      border-right: 2px solid $tertiary-color;
+
+      &:first-child > div {
+        margin-right: auto;
+      }
+
+      &:last-child {
+        border-right: none;
+
+        & > div {
+          margin-left: auto;
+        }
+      }
     }
   }
 }
