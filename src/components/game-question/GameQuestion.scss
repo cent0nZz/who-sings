@@ -4,8 +4,9 @@
   &__top {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    margin-bottom: $large-space;
+    min-height: 160px;
   }
 
   &__snippet {

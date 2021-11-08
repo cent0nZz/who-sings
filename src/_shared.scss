@@ -1,9 +1,9 @@
 // Colors
 $primary-color: #297373;
-$secondary-color: #E6E6E6;
-$tertiary-color: #39393A;
-$positive-color: #85FFC7;
-$negative-color: #FF8552;
+$secondary-color: #e6e6e6;
+$tertiary-color: #39393a;
+$positive-color: #85ffc7;
+$negative-color: #ff8552;
 
 // Spaces
 $ssmall-space: 4px;
@@ -13,3 +13,12 @@ $medium-space: 16px;
 $large-space: 24px;
 $xlarge-space: 32px;
 $xxlarge-space: 48px;
+$xxxlarge-space: 64px;
+
+// Mixins
+@mixin heading {
+  font-weight: bold;
+  font-size: 20px;
+  margin: $medium-space 0;
+  color: $tertiary-color;
+}

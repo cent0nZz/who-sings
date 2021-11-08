@@ -1,4 +1,4 @@
-@import '../../shared';
+@import "../../shared";
 
 .leaderboard {
   display: flex;
@@ -15,10 +15,7 @@
   }
 
   &__title {
-    font-weight: bold;
-    font-size: 20px;
-    margin: $xlarge-space 0 $xsmall-space;
-    color: #39393a;
+    @include heading;
   }
 
   &__list {

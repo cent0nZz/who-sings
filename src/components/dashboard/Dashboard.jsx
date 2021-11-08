@@ -12,7 +12,7 @@ function Dashboard() {
 
   return (
     <div className="dashboard">
-      <h2 className="dashboard__welcome">{currentUser.isLogged ? `Welcome ${currentUser.name}!` : 'Welcome!'}</h2>
+      <h2 className="dashboard__title">{currentUser.isLogged ? `Welcome ${currentUser.name}!` : 'Welcome!'}</h2>
       <p className="dashboard__description">
         Challenge yourself into this musical quiz game.
         {

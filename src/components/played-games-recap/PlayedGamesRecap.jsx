@@ -17,7 +17,7 @@ function PlayedGamesRecap() {
 
   return (
     <div className="played-games-recap">
-      <h3 className="played-games-recap__title">Your latest games:</h3>
+      <h3 className="played-games-recap__title">Your latest games</h3>
       <div className="played-games-recap__list">
         <List items={playedGames} />
       </div>

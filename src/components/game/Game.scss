@@ -1,22 +1,20 @@
 @import "../../shared";
 
 .game {
-    margin-top: $xlarge-space;
+    margin-top: $medium-space;
 
     &--pre-game {
         display: flex;
         align-items: baseline;
     }
 
-    &__start-intro {
-        font-weight: bold;
-        font-size: 20px;
-        color: $tertiary-color;
+    &__start-title {
+        @include heading;
     }
 
     &__start-cta {
-        margin-left: $medium-space;
-        padding: $small-space;
+        margin-left: $small-space;
+        padding: $ssmall-space;
         border-radius: 8px;
         text-transform: uppercase;
         font-weight: bold;

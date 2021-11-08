@@ -5,10 +5,7 @@
   padding-top: $large-space;
 
   &__title {
-    font-weight: bold;
-    font-size: 18px;
-    margin-bottom: $xsmall-space;
-    color: $tertiary-color;
+    @include heading;
   }
 
   &__list {

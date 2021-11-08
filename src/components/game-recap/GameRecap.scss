@@ -2,10 +2,7 @@
 
 .game-recap {
   &__title {
-    font-weight: bold;
-    font-size: 20px;
-    margin-bottom: $xlarge-space;
-    color: $tertiary-color;
+    @include heading;
   }
 
   &__content {

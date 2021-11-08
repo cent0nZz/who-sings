@@ -53,7 +53,7 @@ function Game() {
       case GAME_STATES.preGame:
         gameMarkup = (
           <div className="game game--pre-game">
-            <h2 className="game__start-intro">Ready to start?</h2>
+            <h2 className="game__start-title">Ready to start?</h2>
             <button className="game__start-cta" onClick={() => setShowGameIntro(true)}>Yeah!</button>
           </div>
         )
