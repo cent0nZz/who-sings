@@ -12,18 +12,6 @@ const API = {
 }
 
 export const getRandomTrack = async (country = 'wx') => {
-  /*await new Promise((resolve) => setTimeout(resolve, 250))
-  return {
-    track: {
-      id: 123,
-      name: 'ciao',
-    },
-    artist: {
-      id: 321,
-      name: 'oi',
-    },
-  }*/
-
   const page = getRandomInteger(API.SAFE_MAX_TRACKS_PAGE)
   const fetchOptions = {
     method: 'GET',
@@ -62,12 +50,6 @@ export const getRandomTrack = async (country = 'wx') => {
 }
 
 export const getRandomArtist = async (country = 'wx') => {
-  /*await new Promise((resolve) => setTimeout(resolve, 250))
-  return {
-    artistId: 445,
-    artistName: 'lop',
-  }*/
-
   const page = getRandomInteger(API.SAFE_MAX_ARTISTS_PAGE)
   const fetchOptions = {
     method: 'GET',
@@ -100,9 +82,6 @@ export const getRandomArtist = async (country = 'wx') => {
 }
 
 export const getTrackSnippet = async (trackId) => {
-  /*await new Promise((resolve) => setTimeout(resolve, 250))
-  return 'hera me from miles'*/
-
   if (!trackId) {
     return null
   }

@@ -47,9 +47,6 @@ export const loadNextQuestion = createAsyncThunk(
       ) {
         return newQuestion
       }
-      /*if (true) {
-        return newQuestion
-      }*/
     }
   }
 )
