@@ -1,4 +1,4 @@
-@import "../../shared";
+@import '../../shared';
 
 .game-choise {
   border: none;
@@ -13,11 +13,11 @@
     color: black;
   }
 
-  &.selected {
+  &--selected {
     background-color: $negative-color;
   }
 
-  &.correct {
+  &--correct {
     background-color: $positive-color;
   }
 }

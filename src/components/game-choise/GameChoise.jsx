@@ -3,8 +3,8 @@ import './GameChoise.scss'
 
 function GameChoise(props) {
   const [selected, setSelected] = useState(null)
-  const selectedClass = selected ? 'game-choise selected' : 'game-choise'
-  const revealResultClass = props.revealResult && props.choise.correct ? 'correct' : ''
+  const selectedClass = selected ? 'game-choise game-choise--selected' : 'game-choise'
+  const revealResultClass = props.revealResult && props.choise.correct ? 'game-choise--correct' : ''
 
   const handleChoiseClick = () => {
     setSelected(true)
