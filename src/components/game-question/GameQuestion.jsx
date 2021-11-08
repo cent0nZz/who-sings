@@ -3,12 +3,9 @@ import GameChoise from '../game-choise/GameChoise'
 import { updateProgress } from '../../redux/slices/currentGameSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import React, { useState } from 'react'
+import { CORRECT_CHOISE_POINTS, QUESTION_TIMEOUT_SECS, QUESTION_REVEAL_RESULT_MS } from '../../constants'
 
 import './GameQuestion.scss'
-
-const CORRECT_CHOISE_POINTS = 50 // TODO: move/change this
-const QUESTION_MAX_TIME_SECS = 100000000 // TODO: move/change this
-const REVEAL_RESULT_TIME_MS = 2500 // TODO: move/change this
 
 function GameQuestion(props) {
   const dispatch = useDispatch()
@@ -33,7 +30,7 @@ function GameQuestion(props) {
   const handleRevealResult = async () => {
     setActiveCountdown(false)
     setRevealResult(true)
-    await new Promise(resolve => setTimeout(resolve, REVEAL_RESULT_TIME_MS))
+    await new Promise(resolve => setTimeout(resolve, QUESTION_REVEAL_RESULT_MS))
     setRevealResult(false)
     setActiveCountdown(true)
   }
@@ -62,7 +59,7 @@ function GameQuestion(props) {
                   revealResult={revealResult}
                   isDisabled={question.skeleton || revealResult}
                   onChoiseClick={handleChoiseClick}
-                  revealResultTimeMs={REVEAL_RESULT_TIME_MS} />
+                  revealResultTimeMs={QUESTION_REVEAL_RESULT_MS} />
               </li>)
           }
         </ul>
@@ -73,7 +70,7 @@ function GameQuestion(props) {
           <Countdown
             active={activeCountdown && question}
             id={question?.snippet}
-            seconds={QUESTION_MAX_TIME_SECS}
+            seconds={QUESTION_TIMEOUT_SECS}
             onFinish={handleGameTimeOut}
             leftContent={'⌛ '}
             rightContent={'"'} />

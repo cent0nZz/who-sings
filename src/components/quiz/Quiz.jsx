@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import Modal from '../modal/Modal'
 import Game from '../game/Game'
-import { GameStates } from '../../redux/slices/currentGameSlice'
+import { GAME_STATES } from '../../constants'
 
 import './Quiz.scss'
 
@@ -23,7 +23,7 @@ function Quiz() {
         </div>
       </Modal>
       {
-        currentGame.gameState === GameStates.inGame
+        currentGame.gameState === GAME_STATES.inGame
           ? <button className="quiz__back style-as-anchor" onClick={() => setShowModal(true)}>Back to Dashboard</button>
           : <Link className="quiz__back" to='/'>Back to Dashboard</Link>
       }

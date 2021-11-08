@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { logIn, logOut } from '../../redux/slices/currentUserSlice'
 import UserModal from '../user-modal/UserModal'
-import { GameStates } from '../../redux/slices/currentGameSlice'
+import { GAME_STATES } from '../../constants'
 
 import './User.scss'
 
@@ -26,7 +26,7 @@ function User() {
       <UserModal isActive={showModal} onSubmit={handleLogIn} onClose={() => setShowModal(false)} />
       <div className="user__name">{currentUser.isLogged && currentUser.name}</div>
       {
-        currentGame.gameState !== GameStates.inGame
+        currentGame.gameState !== GAME_STATES.inGame
           ? (currentUser.isLogged
             ? <button className="user__cta user__cta--logout" onClick={handleLogOut}>Log-Out</button>
             : <button className="user__cta user__cta--login" onClick={() => setShowModal(true)}>Log-In</button>)

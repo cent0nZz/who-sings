@@ -2,15 +2,13 @@ import ProgressBar from '../progress-bar/ProgressBar'
 import Countdown from '../countdown/Countdown'
 import GameQuestion from '../game-question/GameQuestion'
 import { refresh } from '../../redux/slices/currentUserSlice'
-import { resetGame, beginGame, endGame, loadNextQuestion, GameStates } from '../../redux/slices/currentGameSlice'
+import { resetGame, beginGame, endGame, loadNextQuestion } from '../../redux/slices/currentGameSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect, useState } from 'react'
 import GameRecap from '../game-recap/GameRecap'
+import { QUESTIONS_PER_GAME_NUM, GAME_INTRO_LENGTH_SECS, GAME_STATES } from '../../constants'
 
 import './Game.scss'
-
-const MAX = 10 // TODO: move/change this
-const GAME_INTRO_LENGTH_SECS = 3 // TODO: move/change this
 
 function Game() {
   const [showGameIntro, setShowGameIntro] = useState(false)
@@ -32,7 +30,7 @@ function Game() {
   }
 
   const goToNextQuestion = () => {
-    if (currentGameUIIndex < MAX) {
+    if (currentGameUIIndex < QUESTIONS_PER_GAME_NUM) {
       dispatch(loadNextQuestion())
     } else {
       dispatch(endGame(Date.now()))
@@ -52,7 +50,7 @@ function Game() {
     )
   } else {
     switch (currentGame.gameState) {
-      case GameStates.preGame:
+      case GAME_STATES.preGame:
         gameMarkup = (
           <div className="game game--pre-game">
             <h2 className="game__start-intro">Ready to start?</h2>
@@ -60,20 +58,20 @@ function Game() {
           </div>
         )
         break
-      case GameStates.inGame:
+      case GAME_STATES.inGame:
         gameMarkup = (
           <div className="game game--in-game">
             <GameQuestion goToNextQuestion={goToNextQuestion}>
               <div>Score: {currentGame.score}pt.</div>
-              <ProgressBar current={currentGameUIIndex} total={MAX} />
+              <ProgressBar current={currentGameUIIndex} total={QUESTIONS_PER_GAME_NUM} />
             </GameQuestion>
           </div>
         )
         break
-      case GameStates.postGame:
+      case GAME_STATES.postGame:
         gameMarkup = (
           <div className="game game--post-game">
-            <GameRecap points={currentGame.score} time={currentGame.time} numCorrectChoises={currentGame.numCorrectChoises} totalChoises={MAX} />
+            <GameRecap points={currentGame.score} time={currentGame.time} numCorrectChoises={currentGame.numCorrectChoises} totalChoises={QUESTIONS_PER_GAME_NUM} />
           </div>
         )
         break
