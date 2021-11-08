@@ -10,7 +10,7 @@
   height: 100%;
 
   &:disabled {
-    color: black;
+    color: $tertiary-color;
   }
 
   &--selected {

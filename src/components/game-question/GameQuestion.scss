@@ -22,7 +22,7 @@
 
   &__choise {
     flex: 0 0 33.3%;
-    border-left: 2px solid black;
+    border-left: 2px solid $tertiary-color;
 
     &:first-child {
       border-left: none;

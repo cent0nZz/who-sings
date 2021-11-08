@@ -1,12 +1,20 @@
 @import './shared';
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+    'Droid Sans', 'Helvetica Neue', sans-serif;
+  color: $tertiary-color;
+}
+
+a {
+  color: $tertiary-color;
+
+  a:visited {
     color: $tertiary-color;
+  }
 }
 
 button {
+  color: $tertiary-color;
   cursor: pointer;
 }

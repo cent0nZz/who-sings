@@ -6,7 +6,7 @@
   &__item {
     width: min-content;
     display: flex;
-    border-top: 1px solid black;
+    border-top: 1px solid $tertiary-color;
 
     &:first-child {
       border-top: none;
