@@ -30,3 +30,25 @@ $xxxlarge-space: 64px;
   font-size: 20px;
   margin: $medium-space 0;
 }
+
+@mixin link {
+  align-self: flex-end;
+  font-weight: bold;
+  color: $primary-color;
+
+  &:visited {
+    color: $primary-color;
+  }
+}
+
+@mixin button-as-link {
+  align-self: flex-end;
+  font-weight: bold;
+  color: $primary-color;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  border: none;
+  text-decoration: underline;
+  font-size: 16px;
+}

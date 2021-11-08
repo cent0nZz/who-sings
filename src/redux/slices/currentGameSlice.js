@@ -34,9 +34,9 @@ export const loadNextQuestion = createAsyncThunk(
         !newQuestion.snippet ||
         !newQuestion.snippetArtist ||
         newQuestion.otherArtists.length !== 2 ||
-        newQuestion.otherArtists[0].artistId === newQuestion.otherArtists[1].artistId ||
-        newQuestion.otherArtists[0].artistId === newQuestion.snippetArtist ||
-        newQuestion.otherArtists[1].artistId === newQuestion.snippetArtist
+        newQuestion.otherArtists[0].artistName === newQuestion.otherArtists[1].artistName ||
+        newQuestion.otherArtists[0].artistName === newQuestion.snippetArtist ||
+        newQuestion.otherArtists[1].artistName === newQuestion.snippetArtist
       ) {
         continue
       }

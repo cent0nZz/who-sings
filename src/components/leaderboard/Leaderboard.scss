@@ -5,13 +5,7 @@
   flex-direction: column;
 
   &__back {
-    align-self: flex-end;
-    font-weight: bold;
-    color: $primary-color;
-
-    &:visited {
-      color: $primary-color;
-    }
+    @include link;
   }
 
   &__title {

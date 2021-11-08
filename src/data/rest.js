@@ -52,11 +52,11 @@ export const getRandomTrack = async (country = 'wx') => {
   return {
     track: {
       id: track.track_id,
-      name: track.track_name,
+      name: track.track_name.trim(),
     },
     artist: {
       id: track.artist_id,
-      name: track.artist_name,
+      name: track.artist_name.trim(),
     },
   }
 }
@@ -95,7 +95,7 @@ export const getRandomArtist = async (country = 'wx') => {
 
   return {
     artistId: artist.artist_id,
-    artistName: artist.artist_name,
+    artistName: artist.artist_name.trim(),
   }
 }
 

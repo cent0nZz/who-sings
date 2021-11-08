@@ -24,8 +24,8 @@ function Quiz() {
       </Modal>
       {
         currentGame.gameState === GAME_STATES.inGame
-          ? <button className="quiz__back" onClick={() => setShowModal(true)}>Back to Dashboard</button>
-          : <Link className="quiz__back" to='/'>Back to Dashboard</Link>
+          ? <button className="quiz__back--button" onClick={() => setShowModal(true)}>Back to Dashboard</button>
+          : <Link className="quiz__back--link" to='/'>Back to Dashboard</Link>
       }
       <Game />
     </div>
