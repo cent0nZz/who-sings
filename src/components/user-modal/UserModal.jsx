@@ -16,6 +16,10 @@ function UserModal(props) {
       alert('Please insert a username!')
       return
     }
+    if (usernameField.length > 15) {
+      alert('The username cannot exceed 15 characters in length!')
+      return
+    }
 
     props.onSubmit(usernameField)
     setUsernameField('')
