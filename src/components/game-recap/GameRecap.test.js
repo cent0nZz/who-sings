@@ -2,7 +2,7 @@ import React from 'react'
 import { render, screen } from '@testing-library/react'
 import GameRecap from './GameRecap'
 
-test('renders game recap with correct properties', () => {
+test('renders correctly based on properties', () => {
   const points = 150
   const time = 60
   const numCorrectChoises = 3
