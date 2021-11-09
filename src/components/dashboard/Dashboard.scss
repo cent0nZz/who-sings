@@ -19,13 +19,14 @@
 
     &--play {
       background-color: $negative-color;
-      color: white;
       border: 3px solid $tertiary-color;
       margin-right: $medium-space;
+      color: white;
 
       &.disabled {
         pointer-events: none;
-        opacity: 0.3;
+        background-color: #{$negative-color}30;
+        border-color: #{$tertiary-color}30;
       }
     }
 
