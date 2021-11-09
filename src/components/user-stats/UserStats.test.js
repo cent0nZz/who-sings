@@ -1,7 +1,6 @@
 import React from 'react'
-import { render, screen, fireEvent } from '../../redux/test-utils'
+import { render, screen } from '../../redux/test-utils'
 import UserStats from './UserStats'
-import { act } from 'react-dom/test-utils'
 
 let name
 let rank
