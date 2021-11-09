@@ -20,8 +20,8 @@ function Dashboard() {
         }
       </p>
       <div className="dashboard__actions">
-        <Link className={playButtonClass} to='/quiz'>Play Now</Link>
-        <Link className="dashboard__action dashboard__action--leaderboard" to='/leaderboard'>Leaderboard</Link>
+        <Link className={playButtonClass} to="/quiz">Play Now</Link>
+        <Link className="dashboard__action dashboard__action--leaderboard" to="/leaderboard">Leaderboard</Link>
       </div>
       {currentUser.isLogged && <PlayedGamesRecap />}
     </div>

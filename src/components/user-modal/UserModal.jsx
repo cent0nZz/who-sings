@@ -34,7 +34,7 @@ function UserModal(props) {
       <div className="user-modal">
         <label className="user-modal__label">
           Username:
-          <input className="user-modal__input" type='text' name='username' autoComplete='off' value={usernameField} onChange={handleUsernameChange} />
+          <input className="user-modal__input" type="text" name="username" autoComplete="off" value={usernameField} onChange={handleUsernameChange} />
         </label>
         <button className="user-modal__cta" onClick={handleLogInClick}>LogIn</button>
       </div>

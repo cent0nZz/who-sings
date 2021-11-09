@@ -17,7 +17,7 @@ function Quiz() {
         <div className="quit-quiz">
           Are you sure you want to quit the current game? All the progress and stats will be lost!
           <div className="quit-quiz__actions">
-            <Link className="quit-quiz__action quit-quiz__action--yes" to='/'>Yes, quit</Link>
+            <Link className="quit-quiz__action quit-quiz__action--yes" to="/">Yes, quit</Link>
             <button className="quit-quiz__action quit-quiz__action--no" onClick={() => setShowModal(false)}>No, stay</button>
           </div>
         </div>
@@ -25,7 +25,7 @@ function Quiz() {
       {
         currentGame.gameState === GAME_STATES.inGame
           ? <button className="quiz__back--button" onClick={() => setShowModal(true)}>Back to Dashboard</button>
-          : <Link className="quiz__back--link" to='/'>Back to Dashboard</Link>
+          : <Link className="quiz__back--link" to="/">Back to Dashboard</Link>
       }
       <Game />
     </div>
